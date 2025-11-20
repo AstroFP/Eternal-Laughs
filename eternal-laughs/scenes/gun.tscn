@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1av6j12diro7"]
+
+[ext_resource type="Script" uid="uid://cb78jaxttalkd" path="res://scenes/gun.gd" id="1_og67c"]
+[ext_resource type="Texture2D" uid="uid://d13pjysfxu3gf" path="res://assets/textures/weapon/Noto_Emoji_Oreo_1f52b.svg.png" id="2_gp1hk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_og67c"]
+radius = 1317.0015
+
+[node name="Gun" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_og67c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_og67c")
+
+[node name="WeaponPivot" type="Marker2D" parent="."]
+
+[node name="Pistol" type="Sprite2D" parent="WeaponPivot"]
+position = Vector2(85, 24.000002)
+scale = Vector2(0.14343749, 0.14343749)
+texture = ExtResource("2_gp1hk")
+
+[node name="ShootingPoint" type="Marker2D" parent="WeaponPivot/Pistol"]
+unique_name_in_owner = true
+position = Vector2(353.37427, -166.87119)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
