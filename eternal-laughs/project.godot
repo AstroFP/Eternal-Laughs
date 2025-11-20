@@ -27,6 +27,10 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Eternal Laughs"
 
+[gui]
+
+common/snap_controls_to_pixels=false
+
 [input]
 
 up={
