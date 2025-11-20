@@ -1,0 +1,7 @@
+pip install django==5.0
+pip install djangorestframework==3.14.0
+pip install djangorestframework-simplejwt==5.3.1
+pip install channels==4.0.0
+pip install channels-redis==4.2.0
+pip install redis==5.0.1
+pip install django-cors-headers==4.3.1
