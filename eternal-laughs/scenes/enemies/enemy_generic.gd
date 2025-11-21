@@ -1,0 +1,10 @@
+extends CharacterBody2D
+
+var movement_speed := 20.0
+var direction
+@onready var player = get_tree().get_first_node_in_group("player")
+
+func _physics_process(_delta: float) -> void:
+	direction = global_position.direction_to(player.global_position)
+	velocity = direction*movement_speed
+	move_and_slide()

@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ns57kyvayv6k"]
+[gd_scene load_steps=3 format=3 uid="uid://ns57kyvayv6k"]
 
+[ext_resource type="Script" uid="uid://i4bdx5suv6t3" path="res://scenes/enemies/enemy_generic.gd" id="1_0yp0k"]
 [ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="1_hivhv"]
 
-[node name="enemy_robot_walker" type="CharacterBody2D"]
+[node name="enemy_robot_walker" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.06, 0.06)
+motion_mode = 1
+script = ExtResource("1_0yp0k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_hivhv")
