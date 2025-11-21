@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var movement_speed := 20.0
+@export var movement_speed := 20.0
 var direction
 @onready var player = get_tree().get_first_node_in_group("player")
 
