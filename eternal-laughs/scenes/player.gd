@@ -5,10 +5,7 @@ extends CharacterBody2D
 @onready var player_front_texture: Sprite2D = $Sprite2DPlayerFront
 @onready var player_side_texture: Sprite2D = $Sprite2DPlayerSide
 @onready var player_back_texture: Sprite2D = $Sprite2DPlayerBack
-func _ready():
-	print(player_front_texture)
-	print(player_side_texture)
-	print(player_back_texture)
+
 func _physics_process(delta: float) -> void:
 	movement()
 

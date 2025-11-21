@@ -12,10 +12,20 @@ scale = Vector2(0.06, 0.06)
 motion_mode = 1
 script = ExtResource("1_0yp0k")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2DEnemyRobotWalkerFront" type="Sprite2D" parent="."]
 texture = ExtResource("1_hivhv")
 region_enabled = true
-region_rect = Rect2(1450, 120, 800, 1365)
+region_rect = Rect2(1457, 133, 785, 1310)
+
+[node name="Sprite2DEnemyRobotWalkerSide" type="Sprite2D" parent="."]
+texture = ExtResource("1_hivhv")
+region_enabled = true
+region_rect = Rect2(1622, 1652, 445, 1291)
+
+[node name="Sprite2DEnemyRobotWalkerBack" type="Sprite2D" parent="."]
+texture = ExtResource("1_hivhv")
+region_enabled = true
+region_rect = Rect2(2330, 142, 786, 1314)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16.666666, 16.666656)
