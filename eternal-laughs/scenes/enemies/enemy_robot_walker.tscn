@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ns57kyvayv6k"]
+
+[ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="1_hivhv"]
+
+[node name="enemy_robot_walker" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_hivhv")
+region_enabled = true
+region_rect = Rect2(1450, 120, 800, 1365)
