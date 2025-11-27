@@ -7,6 +7,7 @@ class Player(AbstractUser):
     account_level = models.IntegerField(default=1)
     created_at = models.DateTimeField(auto_now_add=True)
     email = models.EmailField(unique=True)
+    gems = models.IntegerField(default=0)
 
     REQUIRED_FIELDS = ['email']
 
