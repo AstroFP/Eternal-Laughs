@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://h61id5khvw4d"]
+[gd_scene load_steps=12 format=3 uid="uid://h61id5khvw4d"]
 
 [ext_resource type="Script" uid="uid://uvbsqtj2ys1r" path="res://scenes/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://blhg583acimgi" path="res://background.png" id="1_l6cm7"]
@@ -52,6 +52,34 @@ font_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
 outline_size = 6
 outline_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8ln24"]
+bg_color = Color(0.8784314, 0.7529412, 0.4392157, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 20.0
+expand_margin_top = 20.0
+expand_margin_right = 20.0
+expand_margin_bottom = 20.0
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rtw2f"]
+content_margin_left = 6.0
+bg_color = Color(0.5921569, 0.5019608, 0.32941177, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oa1go"]
+content_margin_left = 6.0
+bg_color = Color(0.5921569, 0.5019608, 0.32941177, 0.39215687)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="main_menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -93,6 +121,7 @@ theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+disabled = true
 text = "New Game"
 
 [node name="load_game_button" type="Button" parent="menu_container"]
@@ -103,6 +132,7 @@ theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+disabled = true
 text = "Load Game"
 
 [node name="options_button" type="Button" parent="menu_container"]
@@ -151,6 +181,179 @@ label_settings = SubResource("LabelSettings_ekxnf")
 stream = ExtResource("4_wu84c")
 volume_db = -25.0
 autoplay = true
+
+[node name="login_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -70.0
+offset_top = 10.0
+offset_right = -11.0
+offset_bottom = 41.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "LOGIN"
+
+[node name="auth_overlay" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0035191667, 0.0035191681, 0.0035191672, 0.5882353)
+
+[node name="auth_window" type="PanelContainer" parent="auth_overlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 4.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8ln24")
+
+[node name="margin_container" type="MarginContainer" parent="auth_overlay/auth_window"]
+layout_mode = 2
+
+[node name="forms_container" type="VBoxContainer" parent="auth_overlay/auth_window/margin_container"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="login_form" type="VBoxContainer" parent="auth_overlay/auth_window/margin_container/forms_container"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="login" type="Label" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 30
+text = "LOGIN"
+label_settings = SubResource("LabelSettings_ekxnf")
+horizontal_alignment = 1
+
+[node name="login_email_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+placeholder_text = "E-mail"
+
+[node name="login_pwd_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxFlat_oa1go")
+placeholder_text = "Password"
+secret = true
+
+[node name="submit_login_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "LOGIN"
+
+[node name="go_to_register_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "Don't have account?
+ Create one!"
+
+[node name="register_form" type="VBoxContainer" parent="auth_overlay/auth_window/margin_container/forms_container"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="register" type="Label" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 16
+text = "REGISTER"
+label_settings = SubResource("LabelSettings_ekxnf")
+
+[node name="reg_username_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+placeholder_text = "Username"
+
+[node name="reg_email_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+placeholder_text = "E-mail"
+
+[node name="reg_pwd_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+placeholder_text = "Password"
+secret = true
+
+[node name="reg_pwd_repeat_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
+placeholder_text = "Repeat password"
+secret = true
+
+[node name="back_to_login_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "Back to login"
+
+[node name="register_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "Register"
+
+[node name="close_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "CLOSE"
 
 [connection signal="pressed" from="menu_container/new_game_button" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="menu_container/load_game_button" to="." method="_on_load_game_button_pressed"]
