@@ -14,8 +14,8 @@ const game_path = "res://scenes/game_level.tscn"
 var current_request_type = ""
 # Adresy Twojego API (zmień na prawdziwe adresy kolegi!)
 # Pamiętaj: w Godot localhost to często 127.0.0.1
-const URL_LOGIN = "http://127.0.0.1:8000/api/login/"
-const URL_REGISTER = "http://127.0.0.1:8000/api/register/"
+const URL_LOGIN = "http://localhost:8000/api/auth/login/"
+const URL_REGISTER = "http://localhost:8000/api/auth/register/"
 
 func _ready() -> void:
 	
