@@ -11,6 +11,7 @@ const game_path = "res://scenes/game_level.tscn"
 # 1. Referencja do węzła HTTP (Twojego listonosza)
 @onready var http_sender = $http_request
 
+var current_request_type = ""
 # Adresy Twojego API (zmień na prawdziwe adresy kolegi!)
 # Pamiętaj: w Godot localhost to często 127.0.0.1
 const URL_LOGIN = "http://127.0.0.1:8000/api/login/"
@@ -75,6 +76,8 @@ func _on_submit_login_pressed():
 		"password": password
 	}
 	
+	current_request_type = "LOGIN"
+	
 	# 3. Zamieniamy na JSON i wysyłamy
 	print("Wysyłam logowanie...", data_to_send)
 	send_post_request(URL_LOGIN, data_to_send)
@@ -100,6 +103,8 @@ func _on_submit_register_pressed():
 		"password": pass1,
 		"password2": pass2
 	}
+	
+	current_request_type = "REGISTER"
 	
 	print("Wysyłam rejestrację...", data_to_send)
 	send_post_request(URL_REGISTER, data_to_send)
@@ -136,11 +141,21 @@ func _on_server_responded(result, response_code, headers, body):
 	
 	# PRZYKŁAD REAKCJI:
 	if response_code == 200 or response_code == 201:
-		print("Sukces!")
-		auth_overlay.visible = false
-		$menu_container/new_game_button.disabled = false
-		$menu_container/load_game_button.disabled = false
-		$menu_container/new_game_button.grab_focus()
+		
+		if current_request_type == "LOGIN":
+			print("Zalogowano pomyślnie! Odblokowuję grę.")
+			auth_overlay.visible = false
+			$menu_container/new_game_button.disabled = false
+			$menu_container/load_game_button.disabled = false
+			$menu_container/new_game_button.grab_focus()
+			
+		elif current_request_type == "REGISTER":
+			print("Zarejestrowano pomyślnie! Przełączam na logowanie.")
+			# Tutaj NIE odblokowujemy gry!
+			# Zamiast tego, automatycznie przełączamy użytkownika na formularz logowania
+			# żeby mógł wpisać nowo utworzone dane.
+			_on_back_to_login_pressed()
+			
 	elif response_code == 401 or response_code == 400:
 		print("Błąd logowania: Nieprawidłowe dane.")
 		# Tu możesz np. zmienić tekst w jakimś Labelu na czerwono "Błędne hasło"
