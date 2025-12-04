@@ -9,7 +9,8 @@ class Player(AbstractUser):
     email = models.EmailField(unique=True)
     gems = models.IntegerField(default=0)
 
-    REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['username']
 
     def __str__(self):
         return self.username
