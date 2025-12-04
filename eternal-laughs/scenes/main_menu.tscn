@@ -248,6 +248,7 @@ label_settings = SubResource("LabelSettings_ekxnf")
 horizontal_alignment = 1
 
 [node name="login_email_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 13
@@ -255,6 +256,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
 placeholder_text = "E-mail"
 
 [node name="login_pwd_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 13
@@ -263,6 +265,7 @@ placeholder_text = "Password"
 secret = true
 
 [node name="submit_login_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("3_bqqt6")
@@ -272,6 +275,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
 text = "LOGIN"
 
 [node name="go_to_register_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/login_form"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -298,6 +302,7 @@ text = "REGISTER"
 label_settings = SubResource("LabelSettings_ekxnf")
 
 [node name="reg_username_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 12
@@ -305,6 +310,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
 placeholder_text = "Username"
 
 [node name="reg_email_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 12
@@ -312,6 +318,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rtw2f")
 placeholder_text = "E-mail"
 
 [node name="reg_pwd_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 12
@@ -320,6 +327,7 @@ placeholder_text = "Password"
 secret = true
 
 [node name="reg_pwd_repeat_input" type="LineEdit" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 12
@@ -328,6 +336,7 @@ placeholder_text = "Repeat password"
 secret = true
 
 [node name="back_to_login_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("3_bqqt6")
@@ -337,6 +346,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
 text = "Back to login"
 
 [node name="register_button" type="Button" parent="auth_overlay/auth_window/margin_container/forms_container/register_form"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
 theme_override_fonts/font = ExtResource("3_bqqt6")
@@ -354,6 +364,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
 text = "CLOSE"
+
+[node name="http_request" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="menu_container/new_game_button" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="menu_container/load_game_button" to="." method="_on_load_game_button_pressed"]
