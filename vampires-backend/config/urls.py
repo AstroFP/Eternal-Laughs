@@ -23,5 +23,7 @@ urlpatterns = [
     path('api/metagame/', include('apps.metagame.urls')),
     path('api/payments/', include('apps.payments.urls')),
     path('api/auth/', include('apps.users.urls')),
+    path('shop/', include('apps.items.urls')),
+    path('inventory/', include('apps.inventory.urls')),
 
 ]

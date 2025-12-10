@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'apps.metagame',
     'apps.payments',
     'apps.realtime',
+    'apps.items',
+    'apps.inventory'
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
