@@ -8,7 +8,7 @@ radius = 216.66667
 height = 933.3333
 
 [node name="enemy_robot_walker" type="CharacterBody2D" groups=["player"]]
-scale = Vector2(0.06, 0.06)
+scale = Vector2(0.03, 0.03)
 motion_mode = 1
 script = ExtResource("1_0yp0k")
 
@@ -28,5 +28,5 @@ region_enabled = true
 region_rect = Rect2(2330, 142, 786, 1314)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16.666666, 16.666656)
+position = Vector2(1.9073486e-06, 33.333336)
 shape = SubResource("CapsuleShape2D_0yp0k")

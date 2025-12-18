@@ -8,7 +8,7 @@ radius = 183.33333
 height = 833.3333
 
 [node name="enemy_cloaked_malice" type="CharacterBody2D"]
-scale = Vector2(0.06, 0.06)
+scale = Vector2(0.03, 0.03)
 script = ExtResource("1_h0g51")
 
 [node name="Sprite2DEnemyCloakedMaliceFront" type="Sprite2D" parent="."]
