@@ -16,19 +16,11 @@ script = ExtResource("1_g2els")
 scale = Vector2(0.13, 0.13)
 texture = ExtResource("3_dqkch")
 region_enabled = true
-region_rect = Rect2(3386, 238, 851, 1118)
+region_rect = Rect2(3365, 225, 865, 1140)
 
 [node name="Sprite2DPlayerSide" type="Sprite2D" parent="."]
-scale = Vector2(0.13, 0.13)
-texture = ExtResource("3_dqkch")
-region_enabled = true
-region_rect = Rect2(3574, 1391, 504, 1107)
 
 [node name="Sprite2DPlayerBack" type="Sprite2D" parent="."]
-scale = Vector2(0.13, 0.13)
-texture = ExtResource("3_dqkch")
-region_enabled = true
-region_rect = Rect2(4277, 251, 851, 1118)
 
 [node name="Explosion" parent="." instance=ExtResource("4_dqkch")]
 

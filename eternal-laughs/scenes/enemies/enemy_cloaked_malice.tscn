@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0r6aw8b7rxf5"]
+
+[ext_resource type="Script" uid="uid://cftcq720e100j" path="res://scenes/enemies/enemy_cloaked_malice.gd" id="1_h0g51"]
+[ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="2_1a1h6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a1h6"]
+radius = 183.33333
+height = 833.3333
+
+[node name="enemy_cloaked_malice" type="CharacterBody2D"]
+scale = Vector2(0.06, 0.06)
+script = ExtResource("1_h0g51")
+
+[node name="Sprite2DEnemyCloakedMaliceFront" type="Sprite2D" parent="."]
+texture = ExtResource("2_1a1h6")
+region_enabled = true
+region_rect = Rect2(986, 3239, 897, 1049)
+
+[node name="Sprite2DEnemyCloakedMaliceSide" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_1a1h6")
+region_enabled = true
+region_rect = Rect2(986, 4519, 705, 1070)
+
+[node name="Sprite2DEnemyCloakedMaliceBack" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_1a1h6")
+region_enabled = true
+region_rect = Rect2(2064, 3239, 896, 1049)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -50)
+shape = SubResource("CapsuleShape2D_1a1h6")
