@@ -30,6 +30,7 @@ project/assembly_name="Eternal Laughs"
 [global_group]
 
 player=""
+attack=""
 
 [gui]
 

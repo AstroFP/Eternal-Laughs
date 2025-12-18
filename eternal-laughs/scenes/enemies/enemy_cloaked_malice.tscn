@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c0r6aw8b7rxf5"]
+[gd_scene load_steps=6 format=3 uid="uid://c0r6aw8b7rxf5"]
 
 [ext_resource type="Script" uid="uid://cftcq720e100j" path="res://scenes/enemies/enemy_cloaked_malice.gd" id="1_h0g51"]
 [ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="2_1a1h6"]
+[ext_resource type="Script" uid="uid://dgyga0gt43qk6" path="res://scripts/health.gd" id="2_fgd1c"]
+[ext_resource type="Script" uid="uid://ccap2xnjtosb6" path="res://scripts/hurtbox.gd" id="4_imadf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1a1h6"]
 radius = 183.33333
@@ -9,7 +11,14 @@ height = 833.3333
 
 [node name="enemy_cloaked_malice" type="CharacterBody2D"]
 scale = Vector2(0.03, 0.03)
+collision_layer = 3
 script = ExtResource("1_h0g51")
+movement_speed = 35.0
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_fgd1c")
+max_health = 70
+metadata/_custom_type_script = "uid://dgyga0gt43qk6"
 
 [node name="Sprite2DEnemyCloakedMaliceFront" type="Sprite2D" parent="."]
 texture = ExtResource("2_1a1h6")
@@ -31,3 +40,16 @@ region_rect = Rect2(2064, 3239, 896, 1049)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -50)
 shape = SubResource("CapsuleShape2D_1a1h6")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_imadf")
+metadata/_custom_type_script = "uid://ccap2xnjtosb6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -50)
+shape = SubResource("CapsuleShape2D_1a1h6")
+
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="damage_received" from="Hurtbox" to="." method="_on_hurtbox_damage_received"]

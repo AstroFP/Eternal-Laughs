@@ -1,14 +1,19 @@
 extends Area2D
 
 @onready var anim = %BoomAnimation
+@onready var hitbox = $Hitbox
+@onready var collision = $Hitbox/CollisionShape2D
+@export var cooldown = 3.0
 
-func _physics_process(delta: float) -> void:
-	var enemies_in_range = get_overlapping_bodies()
-	for enemy in enemies_in_range:
-		if enemy.has_method("take_damage"):
-			enemy.take_damage()
+func _ready():
+	anim.visible = false
+	collision.set_deferred("disabled",true)
 
 func _on_timer_timeout() -> void:
+	collision.set_deferred("disabled",false)
+	for area in get_overlapping_areas():
+		if area.has_method("take_damage"):
+			area.take_damage(hitbox.damage)
 	anim.visible = true
 	anim.play("default")
 

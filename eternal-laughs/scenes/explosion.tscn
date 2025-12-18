@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cmc4ndcfsb33y"]
+[gd_scene load_steps=22 format=3 uid="uid://cmc4ndcfsb33y"]
 
 [ext_resource type="Script" uid="uid://ckkxp8v0aiv11" path="res://scenes/explosion.gd" id="1_0j0nb"]
 [ext_resource type="Texture2D" uid="uid://cuuk4rftlxles" path="res://assets/textures/weapon/explosion-frames/frame_00_delay-0.08s.png" id="2_0j0nb"]
@@ -18,9 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://c2tf7v4m6c8nf" path="res://assets/textures/weapon/explosion-frames/frame_14_delay-0.08s.png" id="16_pbrom"]
 [ext_resource type="Texture2D" uid="uid://bq541pei5xolh" path="res://assets/textures/weapon/explosion-frames/frame_15_delay-0.08s.png" id="17_4q2s3"]
 [ext_resource type="Texture2D" uid="uid://jtkrpku5v63m" path="res://assets/textures/weapon/explosion-frames/frame_16_delay-0.08s.png" id="18_yoms3"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yoms3"]
-radius = 454.0044
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="19_xe657"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2vlgv"]
 animations = [{
@@ -81,28 +79,40 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_yoms3"]
+radius = 323.07584
+
 [node name="Explosion" type="Area2D"]
 show_behind_parent = true
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_0j0nb")
+cooldown = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_yoms3")
-
-[node name="BoomAnimation" type="AnimatedSprite2D" parent="CollisionShape2D"]
+[node name="BoomAnimation" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
-visible = false
 show_behind_parent = true
-scale = Vector2(13.267606, 13.267606)
+scale = Vector2(9.464789, 9.464789)
 sprite_frames = SubResource("SpriteFrames_2vlgv")
 frame = 6
 frame_progress = 0.31559038
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yoms3")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
-[connection signal="animation_finished" from="CollisionShape2D/BoomAnimation" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="Hitbox" type="Area2D" parent="." groups=["attack"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("19_xe657")
+damage = 35
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_yoms3")
+
+[connection signal="animation_finished" from="BoomAnimation" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
