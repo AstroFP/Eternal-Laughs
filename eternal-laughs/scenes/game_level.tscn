@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://umcwvv7t6qmn"]
+[gd_scene load_steps=5 format=3 uid="uid://umcwvv7t6qmn"]
 
 [ext_resource type="Texture2D" uid="uid://bqu688gk1j188" path="res://assets/textures/background/dirt_full_new.png" id="1_h3dka"]
 [ext_resource type="PackedScene" uid="uid://b2v3sslvw6ecb" path="res://scenes/player.tscn" id="2_6fv2f"]
 [ext_resource type="PackedScene" uid="uid://ns57kyvayv6k" path="res://scenes/enemies/enemy_robot_walker.tscn" id="3_d1hwj"]
+[ext_resource type="PackedScene" uid="uid://c0r6aw8b7rxf5" path="res://scenes/enemies/enemy_cloaked_malice.tscn" id="4_3tmo4"]
 
 [node name="GameLevel" type="Node2D"]
 
@@ -18,3 +19,6 @@ scale = Vector2(0.5, 0.5)
 motion_mode = 1
 
 [node name="enemy_robot_walker" parent="." instance=ExtResource("3_d1hwj")]
+position = Vector2(8.999999, -5.9999995)
+
+[node name="enemy_cloaked_malice" parent="." instance=ExtResource("4_3tmo4")]

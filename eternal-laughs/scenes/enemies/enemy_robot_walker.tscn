@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ns57kyvayv6k"]
 
-[ext_resource type="Script" uid="uid://i4bdx5suv6t3" path="res://scenes/enemies/enemy_generic.gd" id="1_0yp0k"]
+[ext_resource type="Script" uid="uid://i4bdx5suv6t3" path="res://scenes/enemies/enemy_robot_walker.gd" id="1_0yp0k"]
 [ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="1_hivhv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0yp0k"]
