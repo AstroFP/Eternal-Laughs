@@ -8,7 +8,7 @@ radius = 166.66666
 height = 566.6666
 
 [node name="enemy_green_centi" type="CharacterBody2D"]
-scale = Vector2(0.06, 0.06)
+scale = Vector2(0.03, 0.03)
 script = ExtResource("1_gyxxq")
 
 [node name="Sprite2DEnemyGreenCentiFront" type="Sprite2D" parent="."]

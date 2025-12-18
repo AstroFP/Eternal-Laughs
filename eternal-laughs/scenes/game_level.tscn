@@ -31,6 +31,7 @@ time_start = 20
 time_end = 30
 enemy = ExtResource("5_hjd5e")
 enemy_num = 5
+enemy_spawn_delay = 2
 metadata/_custom_type_script = "uid://dntkqfvbn1rl7"
 
 [node name="GameLevel" type="Node2D"]
@@ -43,7 +44,7 @@ region_enabled = true
 region_rect = Rect2(-2500, -2500, 5000, 5000)
 
 [node name="Player" parent="." instance=ExtResource("2_6fv2f")]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 motion_mode = 1
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_d1hwj")]
