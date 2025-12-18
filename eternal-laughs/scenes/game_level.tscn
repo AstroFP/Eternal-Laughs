@@ -1,8 +1,37 @@
-[gd_scene load_steps=4 format=3 uid="uid://umcwvv7t6qmn"]
+[gd_scene load_steps=11 format=3 uid="uid://umcwvv7t6qmn"]
 
 [ext_resource type="Texture2D" uid="uid://bqu688gk1j188" path="res://assets/textures/background/dirt_full_new.png" id="1_h3dka"]
 [ext_resource type="PackedScene" uid="uid://b2v3sslvw6ecb" path="res://scenes/player.tscn" id="2_6fv2f"]
 [ext_resource type="PackedScene" uid="uid://buoo80hwk78jw" path="res://scenes/enemies/spawning/enemy_spawner.tscn" id="3_d1hwj"]
+[ext_resource type="Script" uid="uid://dntkqfvbn1rl7" path="res://scenes/enemies/spawning/spawn_info.gd" id="4_1k01j"]
+[ext_resource type="PackedScene" uid="uid://c0r6aw8b7rxf5" path="res://scenes/enemies/enemy_cloaked_malice.tscn" id="4_3tmo4"]
+[ext_resource type="PackedScene" uid="uid://ns57kyvayv6k" path="res://scenes/enemies/enemy_robot_walker.tscn" id="5_hfoqy"]
+[ext_resource type="PackedScene" uid="uid://de0d64mt63x1v" path="res://scenes/enemies/enemy_green_centi.tscn" id="5_hjd5e"]
+
+[sub_resource type="Resource" id="Resource_xx1rs"]
+script = ExtResource("4_1k01j")
+time_end = 10
+enemy = ExtResource("5_hfoqy")
+enemy_num = 1
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://dntkqfvbn1rl7"
+
+[sub_resource type="Resource" id="Resource_bf4eo"]
+script = ExtResource("4_1k01j")
+time_start = 10
+time_end = 20
+enemy = ExtResource("4_3tmo4")
+enemy_num = 1
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://dntkqfvbn1rl7"
+
+[sub_resource type="Resource" id="Resource_aqf4n"]
+script = ExtResource("4_1k01j")
+time_start = 20
+time_end = 30
+enemy = ExtResource("5_hjd5e")
+enemy_num = 5
+metadata/_custom_type_script = "uid://dntkqfvbn1rl7"
 
 [node name="GameLevel" type="Node2D"]
 
@@ -18,3 +47,4 @@ scale = Vector2(0.5, 0.5)
 motion_mode = 1
 
 [node name="EnemySpawner" parent="." instance=ExtResource("3_d1hwj")]
+spawns = Array[ExtResource("4_1k01j")]([SubResource("Resource_xx1rs"), SubResource("Resource_bf4eo"), SubResource("Resource_aqf4n")])
