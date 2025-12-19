@@ -7,6 +7,14 @@ var direction
 @onready var enemy_side_texture: Sprite2D = $Sprite2DEnemyRobotWalkerSide
 @onready var enemy_back_texture: Sprite2D = $Sprite2DEnemyRobotWalkerBack
 
+@onready var health: Health = $Health
+
+func _on_hurtbox_damage_received(damage: int) -> void:
+	health.take_damage(damage)
+
+func _on_health_health_depleted() -> void:
+	queue_free()
+
 func _physics_process(_delta: float) -> void:
 	direction = global_position.direction_to(player.global_position)
 	adjust_texture(direction)
