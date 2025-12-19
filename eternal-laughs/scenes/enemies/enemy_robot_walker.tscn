@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ns57kyvayv6k"]
+[gd_scene load_steps=7 format=3 uid="uid://ns57kyvayv6k"]
 
 [ext_resource type="Script" uid="uid://i4bdx5suv6t3" path="res://scenes/enemies/enemy_robot_walker.gd" id="1_0yp0k"]
 [ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="1_hivhv"]
 [ext_resource type="Script" uid="uid://dgyga0gt43qk6" path="res://scripts/health.gd" id="2_htuqv"]
 [ext_resource type="Script" uid="uid://ccap2xnjtosb6" path="res://scripts/hurtbox.gd" id="4_gflak"]
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="5_67anb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0yp0k"]
 radius = 216.66667
@@ -14,7 +15,6 @@ scale = Vector2(0.03, 0.03)
 collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_0yp0k")
-movement_speed = null
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_htuqv")
@@ -47,6 +47,16 @@ script = ExtResource("4_gflak")
 metadata/_custom_type_script = "uid://ccap2xnjtosb6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1.9073486e-06, 33.333336)
+shape = SubResource("CapsuleShape2D_0yp0k")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["attack"]]
+script = ExtResource("5_67anb")
+damage = 7
+is_continuous = true
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(1.9073486e-06, 33.333336)
 shape = SubResource("CapsuleShape2D_0yp0k")
 

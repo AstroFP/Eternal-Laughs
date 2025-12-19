@@ -82,12 +82,9 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_yoms3"]
 radius = 323.07584
 
-[node name="Explosion" type="Area2D"]
+[node name="Explosion" type="Node2D"]
 show_behind_parent = true
-collision_layer = 0
-collision_mask = 2
 script = ExtResource("1_0j0nb")
-cooldown = null
 
 [node name="BoomAnimation" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -96,9 +93,6 @@ scale = Vector2(9.464789, 9.464789)
 sprite_frames = SubResource("SpriteFrames_2vlgv")
 frame = 6
 frame_progress = 0.31559038
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_yoms3")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

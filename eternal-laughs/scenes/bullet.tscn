@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="3_l5glv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eoqba"]
-radius = 45.39824
+radius = 19.0
 
 [node name="Bullet" type="Area2D"]
 top_level = true
@@ -17,7 +17,7 @@ script = ExtResource("1_y25gk")
 shape = SubResource("CircleShape2D_eoqba")
 
 [node name="Projectile" type="Sprite2D" parent="."]
-scale = Vector2(0.095, 0.095)
+scale = Vector2(0.0425, 0.042499997)
 texture = ExtResource("2_l5glv")
 
 [node name="Hitbox" type="Area2D" parent="." groups=["attack"]]

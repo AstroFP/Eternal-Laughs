@@ -1,9 +1,10 @@
-extends Area2D
+extends Node2D
 
 @onready var anim = %BoomAnimation
 @onready var hitbox = $Hitbox
 @onready var collision = $Hitbox/CollisionShape2D
 @export var cooldown = 3.0
+
 
 func _ready():
 	anim.visible = false
@@ -11,12 +12,9 @@ func _ready():
 
 func _on_timer_timeout() -> void:
 	collision.set_deferred("disabled",false)
-	for area in get_overlapping_areas():
-		if area.has_method("take_damage"):
-			area.take_damage(hitbox.damage)
 	anim.visible = true
 	anim.play("default")
 
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	anim.visible = false
+	collision.set_deferred("disabled",true)

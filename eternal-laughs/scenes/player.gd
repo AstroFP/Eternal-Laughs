@@ -1,10 +1,26 @@
 extends CharacterBody2D
 
+const end_path = "res://scenes/end_screen.tscn"
+
 @export var player_movement_speed := 40.0
 
+@onready var health: Health = $Health
+@onready var invtimer: Timer = $Hurtbox/InvincibilityTimer
+@onready var healthbar: ProgressBar = $HealthBar
+@onready var healthlabel: Label = $HealthBar/HealthLabel
 @onready var player_front_texture: Sprite2D = $Sprite2DPlayerFront
 @onready var player_side_texture: Sprite2D = $Sprite2DPlayerSide
 @onready var player_back_texture: Sprite2D = $Sprite2DPlayerBack
+
+var invincibility := false
+
+func _ready():
+	healthbar_update()
+
+func healthbar_update():
+	healthbar.max_value = health.max_health
+	healthbar.value = health.health
+	healthlabel.text = "%s/%s" % [health.health, health.max_health]
 
 func _physics_process(delta: float) -> void:
 	movement()
@@ -41,3 +57,22 @@ func adjust_texture(direction: Vector2) -> void:
 			# Moving down - show front texture
 			player_front_texture.visible = true
 			player_front_texture.flip_h = false
+
+
+func _on_hurtbox_damage_received(damage: int) -> void:
+	if not invincibility:
+		health.take_damage(damage)
+		invtimer.start()
+		invincibility = true
+
+func _on_health_health_depleted() -> void:
+	get_tree().change_scene_to_file(end_path)
+
+func _on_invincibility_timer_timeout() -> void:
+	invincibility = false
+
+func _on_health_health_changed(diff: int) -> void:
+	healthbar_update()
+
+func _on_health_max_health_changed(diff: int) -> void:
+	healthbar_update()
