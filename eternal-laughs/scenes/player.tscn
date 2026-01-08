@@ -1,16 +1,93 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2v3sslvw6ecb"]
+[gd_scene load_steps=9 format=3 uid="uid://b2v3sslvw6ecb"]
 
-[ext_resource type="Texture2D" uid="uid://3lndowr84sls" path="res://assets/textures/player/player.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://l1naqwf3n3no" path="res://scenes/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://dgyga0gt43qk6" path="res://scripts/health.gd" id="2_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="3_dqkch"]
 [ext_resource type="PackedScene" uid="uid://c1av6j12diro7" path="res://scenes/gun.tscn" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cmc4ndcfsb33y" path="res://scenes/explosion.tscn" id="4_dqkch"]
+[ext_resource type="Script" uid="uid://ccap2xnjtosb6" path="res://scripts/hurtbox.gd" id="6_tuyoq"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
+radius = 33.0
+height = 116.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tuyoq"]
+bg_color = Color(0.8980392, 0, 0, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_qlg0r")
+metadata/_custom_type_script = "uid://dgyga0gt43qk6"
+
+[node name="Sprite2DPlayerFront" type="Sprite2D" parent="."]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("3_dqkch")
+region_enabled = true
+region_rect = Rect2(3386, 238, 851, 1118)
+
+[node name="Sprite2DPlayerSide" type="Sprite2D" parent="."]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("3_dqkch")
+region_enabled = true
+region_rect = Rect2(3574, 1391, 504, 1107)
+
+[node name="Sprite2DPlayerBack" type="Sprite2D" parent="."]
+scale = Vector2(0.13, 0.13)
+texture = ExtResource("3_dqkch")
+region_enabled = true
+region_rect = Rect2(4277, 251, 851, 1118)
 
 [node name="Explosion" parent="." instance=ExtResource("4_dqkch")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_3vyb7")
-
 [node name="Gun" parent="." instance=ExtResource("3_qhqgy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_dqkch")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+scale = Vector2(1.01, 1.01)
+script = ExtResource("6_tuyoq")
+metadata/_custom_type_script = "uid://ccap2xnjtosb6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_dqkch")
+
+[node name="InvincibilityTimer" type="Timer" parent="Hurtbox"]
+wait_time = 0.4
+one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+z_index = 100
+z_as_relative = false
+offset_left = -70.0
+offset_top = -116.0
+offset_right = 70.0
+offset_bottom = -86.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_tuyoq")
+step = 1.0
+value = 100.0
+show_percentage = false
+
+[node name="HealthLabel" type="Label" parent="HealthBar"]
+layout_mode = 0
+offset_right = 140.0
+offset_bottom = 30.0
+text = "hp/maxhp"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="max_health_changed" from="Health" to="." method="_on_health_max_health_changed"]
+[connection signal="damage_received" from="Hurtbox" to="." method="_on_hurtbox_damage_received"]
+[connection signal="timeout" from="Hurtbox/InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]

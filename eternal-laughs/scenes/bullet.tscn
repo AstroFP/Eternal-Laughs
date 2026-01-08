@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://727npi7wl0pn"]
+[gd_scene load_steps=5 format=3 uid="uid://727npi7wl0pn"]
 
 [ext_resource type="Script" uid="uid://c8djllkijf270" path="res://scenes/bullet.gd" id="1_y25gk"]
 [ext_resource type="Texture2D" uid="uid://bm7s68enxvv3r" path="res://assets/textures/weapon/Noto_Emoji_v2.034_1f996.svg.png" id="2_l5glv"]
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="3_l5glv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eoqba"]
-radius = 45.39824
+radius = 19.0
 
 [node name="Bullet" type="Area2D"]
 top_level = true
-collision_layer = 0
+collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_y25gk")
 
@@ -16,7 +17,17 @@ script = ExtResource("1_y25gk")
 shape = SubResource("CircleShape2D_eoqba")
 
 [node name="Projectile" type="Sprite2D" parent="."]
-scale = Vector2(0.095, 0.095)
+scale = Vector2(0.0425, 0.042499997)
 texture = ExtResource("2_l5glv")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["attack"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_l5glv")
+damage = 20
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_eoqba")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

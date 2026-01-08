@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://buoo80hwk78jw"]
+
+[ext_resource type="Script" uid="uid://y6naljqdmduy" path="res://scenes/enemies/spawning/enemy_spawner.gd" id="1_f72bg"]
+[ext_resource type="Script" uid="uid://dntkqfvbn1rl7" path="res://scenes/enemies/spawning/spawn_info.gd" id="2_o6hdp"]
+[ext_resource type="PackedScene" uid="uid://ns57kyvayv6k" path="res://scenes/enemies/enemy_robot_walker.tscn" id="3_xx1rs"]
+
+[sub_resource type="Resource" id="Resource_xx1rs"]
+script = ExtResource("2_o6hdp")
+time_end = 10
+enemy = ExtResource("3_xx1rs")
+enemy_num = 1
+enemy_spawn_delay = 1
+metadata/_custom_type_script = "uid://dntkqfvbn1rl7"
+
+[node name="EnemySpawner" type="Node2D"]
+script = ExtResource("1_f72bg")
+spawns = Array[ExtResource("2_o6hdp")]([SubResource("Resource_xx1rs")])
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

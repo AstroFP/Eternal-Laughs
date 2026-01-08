@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=3 uid="uid://h61id5khvw4d"]
+
+[ext_resource type="Script" uid="uid://uvbsqtj2ys1r" path="res://scenes/main_menu.gd" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://blhg583acimgi" path="res://background.png" id="1_l6cm7"]
+[ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_bqqt6"]
+[ext_resource type="AudioStream" uid="uid://dofgcrjy5ac1p" path="res://resources/music/KDM_menu_music.ogg" id="4_wu84c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
+content_margin_top = 5.0
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ekxnf"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wu84c"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_ekxnf"]
+font_size = 30
+font_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+outline_size = 6
+outline_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekxnf")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l6cm7")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="menu_container" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 72.0
+offset_top = -96.0
+offset_right = 209.0
+offset_bottom = 45.0
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="new_game_button" type="Button" parent="menu_container"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "New Game"
+
+[node name="load_game_button" type="Button" parent="menu_container"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "Load Game"
+
+[node name="options_button" type="Button" parent="menu_container"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "Options"
+
+[node name="credits_button" type="Button" parent="menu_container"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "Credits"
+
+[node name="quit_button" type="Button" parent="menu_container"]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "Quit Game"
+
+[node name="title" type="Label" parent="."]
+texture_filter = 2
+layout_mode = 0
+offset_left = 35.0
+offset_top = 40.0
+offset_right = 261.0
+offset_bottom = 71.0
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "ETERNAL LAUGHS"
+label_settings = SubResource("LabelSettings_ekxnf")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_wu84c")
+volume_db = -25.0
+autoplay = true
+
+[connection signal="pressed" from="menu_container/new_game_button" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="menu_container/load_game_button" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="menu_container/options_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="menu_container/credits_button" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="menu_container/quit_button" to="." method="_on_quit_button_pressed"]
