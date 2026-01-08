@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2v3sslvw6ecb"]
+[gd_scene load_steps=11 format=3 uid="uid://b2v3sslvw6ecb"]
 
 [ext_resource type="Script" uid="uid://l1naqwf3n3no" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://dgyga0gt43qk6" path="res://scripts/health.gd" id="2_qlg0r"]
@@ -17,6 +17,12 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tuyoq"]
+radius = 300.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
+radius = 30.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_g2els")
@@ -86,8 +92,24 @@ text = "hp/maxhp"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_tuyoq")
+
+[node name="CollectArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectArea"]
+shape = SubResource("CircleShape2D_fjrip")
+
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
 [connection signal="max_health_changed" from="Health" to="." method="_on_health_max_health_changed"]
 [connection signal="damage_received" from="Hurtbox" to="." method="_on_hurtbox_damage_received"]
 [connection signal="timeout" from="Hurtbox/InvincibilityTimer" to="." method="_on_invincibility_timer_timeout"]
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
