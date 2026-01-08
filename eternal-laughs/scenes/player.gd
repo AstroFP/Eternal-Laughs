@@ -4,6 +4,11 @@ const end_path = "res://scenes/end_screen.tscn"
 
 @export var player_movement_speed := 40.0
 
+#experience stats
+var experience = 0
+var experience_level = 1
+var collected_experience = 0
+
 @onready var health: Health = $Health
 @onready var invtimer: Timer = $Hurtbox/InvincibilityTimer
 @onready var healthbar: ProgressBar = $HealthBar
