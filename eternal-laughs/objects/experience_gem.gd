@@ -14,8 +14,6 @@ var speed = -1
 @onready var sound = $Sound_collected
 
 func _ready():
-	print("Gem groups: ", get_groups())
-	print("Is gem in 'loot' group? ", is_in_group("loot"))
 	if experience < 5:
 		return
 	elif experience < 25:

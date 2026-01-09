@@ -84,9 +84,7 @@ func _on_health_max_health_changed(diff: int) -> void:
 
 
 func _on_grab_area_area_entered(area: Area2D) -> void:
-	print("Grab area entered by: ", area.name, " groups: ", area.get_groups())
 	if area.is_in_group("loot"):
-		print("Grab: gem detected!")
 		area.target = self
 
 
