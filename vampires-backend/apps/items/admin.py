@@ -7,4 +7,4 @@ from .models import Item
 @admin.register(Item)
 class ItemAdmin(admin.ModelAdmin):
     list_display = ('name', 'category', 'price', 'is_usable',
-                    'attack', 'defense', 'blood_bonus')
+                    'attack', 'defense', 'image_url')
