@@ -1,10 +1,91 @@
-[gd_scene load_steps=4 format=3 uid="uid://chk5d1fxmdfgy"]
+[gd_scene load_steps=10 format=3 uid="uid://chk5d1fxmdfgy"]
 
 [ext_resource type="Texture2D" uid="uid://ddy328nsbe57k" path="res://resources/background/shop_background.png" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://dp2wm2ux81q5i" path="res://scenes/shop.gd" id="1_xfvoa"]
+[ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_1l46r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
 bg_color = Color(0, 0, 0, 0.7921569)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1l46r"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_032fp"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2fc2m"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8r1wq"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajxib"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
 
 [node name="shop" type="Control"]
 layout_mode = 3
@@ -30,9 +111,9 @@ metadata/_edit_use_anchors_ = true
 [node name="item_panel" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 54.0
-offset_top = 85.0
-offset_right = 371.0
-offset_bottom = 308.0
+offset_top = 55.0
+offset_right = 381.0
+offset_bottom = 325.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
 
 [node name="item_scroll_panel" type="ScrollContainer" parent="item_panel"]
@@ -50,10 +131,33 @@ theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="add_funds_button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 524.0
-offset_top = 12.0
-offset_right = 624.0
-offset_bottom = 43.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -131.0
+offset_top = 11.0
+offset_right = -11.0
+offset_bottom = 65.0
+grow_horizontal = 0
+theme_override_constants/separation = 10
+
+[node name="add_funds_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
+theme_override_styles/focus = SubResource("StyleBoxFlat_2fc2m")
 text = "ADD FUNDS"
+
+[node name="exit_button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_1l46r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
+theme_override_styles/focus = SubResource("StyleBoxFlat_ajxib")
+text = "BACK"

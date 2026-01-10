@@ -1,7 +1,7 @@
+VBoxContainer
 Button
 Label
 TextureRect
-VBoxContainer
 PanelContainer
 GridContainer
 ScrollContainer
