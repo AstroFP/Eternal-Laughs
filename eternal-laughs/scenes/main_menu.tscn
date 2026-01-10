@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://h61id5khvw4d"]
+[gd_scene load_steps=16 format=3 uid="uid://h61id5khvw4d"]
 
 [ext_resource type="Script" uid="uid://uvbsqtj2ys1r" path="res://scenes/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://blhg583acimgi" path="res://background.png" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_bqqt6"]
 [ext_resource type="AudioStream" uid="uid://dofgcrjy5ac1p" path="res://resources/music/KDM_menu_music.ogg" id="4_wu84c"]
+[ext_resource type="Texture2D" uid="uid://cx3b5nin5ah4l" path="res://icon.svg" id="5_8ln24"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
 content_margin_left = 10.0
@@ -126,7 +127,7 @@ anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 72.0
 offset_top = -96.0
-offset_right = 209.0
+offset_right = 237.0
 offset_bottom = 45.0
 grow_vertical = 2
 theme_override_constants/separation = 6
@@ -203,7 +204,6 @@ autoplay = true
 
 [node name="auth_overlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -294,7 +294,6 @@ text = "Don't have account? Create one!"
 
 [node name="register_form" type="VBoxContainer" parent="auth_overlay/auth_window/margin_container/forms_container"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 8
 
@@ -406,6 +405,22 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
 text = "LOGIN"
+
+[node name="loading_icon" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 309.0
+offset_top = -187.0
+offset_right = 437.0
+offset_bottom = -59.0
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+pivot_offset = Vector2(0.08, 0)
+texture = ExtResource("5_8ln24")
+stretch_mode = 6
 
 [connection signal="pressed" from="menu_container/new_game_button" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="menu_container/load_game_button" to="." method="_on_load_game_button_pressed"]

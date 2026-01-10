@@ -1,6 +1,7 @@
 from django.core.signing import TimestampSigner, BadSignature, SignatureExpired
 from ..models import Player
-
+from django.core.mail import send_mail
+from django.conf import settings
 signer = TimestampSigner()
 
 
@@ -19,3 +20,19 @@ def validate_email_token(token, max_age=60*60*24):
         return user
     except (BadSignature, SignatureExpired, Player.DoesNotExist):
         return None
+
+
+def send_activation_email(user, request):
+    token = generate_email_token(user)
+
+    activation_link = (
+        f"http://localhost:8000/api/auth/verify-email/?token={token}"
+    )
+
+    send_mail(
+        subject="Aktywuj swoje konto",
+        message=f"Kliknij w link aby aktywować konto:\n{activation_link}",
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[user.email],
+        fail_silently=False,
+    )

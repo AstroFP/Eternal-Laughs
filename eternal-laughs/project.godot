@@ -15,6 +15,10 @@ run/main_scene="uid://h61id5khvw4d"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scenes/Global.gd"
+
 [display]
 
 window/size/viewport_width=640
@@ -26,6 +30,15 @@ window/stretch/mode="canvas_items"
 [dotnet]
 
 project/assembly_name="Eternal Laughs"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[global_group]
+
+player=""
+attack=""
 
 [gui]
 

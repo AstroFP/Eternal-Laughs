@@ -1,0 +1,112 @@
+[gd_scene load_steps=22 format=3 uid="uid://cmc4ndcfsb33y"]
+
+[ext_resource type="Script" uid="uid://ckkxp8v0aiv11" path="res://scenes/explosion.gd" id="1_0j0nb"]
+[ext_resource type="Texture2D" uid="uid://cuuk4rftlxles" path="res://assets/textures/weapon/explosion-frames/frame_00_delay-0.08s.png" id="2_0j0nb"]
+[ext_resource type="Texture2D" uid="uid://b0ff20gt1j40k" path="res://assets/textures/weapon/explosion-frames/frame_01_delay-0.08s.png" id="3_xe657"]
+[ext_resource type="Texture2D" uid="uid://ckbqgn2i5ewqh" path="res://assets/textures/weapon/explosion-frames/frame_02_delay-0.08s.png" id="4_6m2gf"]
+[ext_resource type="Texture2D" uid="uid://bjqkovpoxmxam" path="res://assets/textures/weapon/explosion-frames/frame_03_delay-0.08s.png" id="5_fasmd"]
+[ext_resource type="Texture2D" uid="uid://mfbdxl7y7q7h" path="res://assets/textures/weapon/explosion-frames/frame_04_delay-0.08s.png" id="6_h461u"]
+[ext_resource type="Texture2D" uid="uid://c1g1w07v4d8cv" path="res://assets/textures/weapon/explosion-frames/frame_05_delay-0.08s.png" id="7_neyb0"]
+[ext_resource type="Texture2D" uid="uid://l6rb6xtqtine" path="res://assets/textures/weapon/explosion-frames/frame_06_delay-0.08s.png" id="8_0dw2d"]
+[ext_resource type="Texture2D" uid="uid://dxfmav14103tj" path="res://assets/textures/weapon/explosion-frames/frame_07_delay-0.08s.png" id="9_00uf8"]
+[ext_resource type="Texture2D" uid="uid://dbdm1iflc05xc" path="res://assets/textures/weapon/explosion-frames/frame_08_delay-0.08s.png" id="10_ohq2j"]
+[ext_resource type="Texture2D" uid="uid://dt5qxn8jwbr0k" path="res://assets/textures/weapon/explosion-frames/frame_09_delay-0.08s.png" id="11_qb5kx"]
+[ext_resource type="Texture2D" uid="uid://txg855un4wlv" path="res://assets/textures/weapon/explosion-frames/frame_10_delay-0.08s.png" id="12_phdfj"]
+[ext_resource type="Texture2D" uid="uid://b7csiugr7gt0h" path="res://assets/textures/weapon/explosion-frames/frame_11_delay-0.08s.png" id="13_wlwaw"]
+[ext_resource type="Texture2D" uid="uid://cpfirv4buyp35" path="res://assets/textures/weapon/explosion-frames/frame_12_delay-0.08s.png" id="14_sjj5b"]
+[ext_resource type="Texture2D" uid="uid://c4mwgk2ethtkf" path="res://assets/textures/weapon/explosion-frames/frame_13_delay-0.08s.png" id="15_bivod"]
+[ext_resource type="Texture2D" uid="uid://c2tf7v4m6c8nf" path="res://assets/textures/weapon/explosion-frames/frame_14_delay-0.08s.png" id="16_pbrom"]
+[ext_resource type="Texture2D" uid="uid://bq541pei5xolh" path="res://assets/textures/weapon/explosion-frames/frame_15_delay-0.08s.png" id="17_4q2s3"]
+[ext_resource type="Texture2D" uid="uid://jtkrpku5v63m" path="res://assets/textures/weapon/explosion-frames/frame_16_delay-0.08s.png" id="18_yoms3"]
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="19_xe657"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2vlgv"]
+animations = [{
+"frames": [{
+"duration": 0.3,
+"texture": ExtResource("2_0j0nb")
+}, {
+"duration": 0.3,
+"texture": ExtResource("3_xe657")
+}, {
+"duration": 0.3,
+"texture": ExtResource("4_6m2gf")
+}, {
+"duration": 0.3,
+"texture": ExtResource("5_fasmd")
+}, {
+"duration": 0.3,
+"texture": ExtResource("6_h461u")
+}, {
+"duration": 0.3,
+"texture": ExtResource("7_neyb0")
+}, {
+"duration": 0.3,
+"texture": ExtResource("8_0dw2d")
+}, {
+"duration": 0.3,
+"texture": ExtResource("9_00uf8")
+}, {
+"duration": 0.3,
+"texture": ExtResource("10_ohq2j")
+}, {
+"duration": 0.3,
+"texture": ExtResource("11_qb5kx")
+}, {
+"duration": 0.3,
+"texture": ExtResource("12_phdfj")
+}, {
+"duration": 0.3,
+"texture": ExtResource("13_wlwaw")
+}, {
+"duration": 0.3,
+"texture": ExtResource("14_sjj5b")
+}, {
+"duration": 0.3,
+"texture": ExtResource("15_bivod")
+}, {
+"duration": 0.3,
+"texture": ExtResource("16_pbrom")
+}, {
+"duration": 0.3,
+"texture": ExtResource("17_4q2s3")
+}, {
+"duration": 0.3,
+"texture": ExtResource("18_yoms3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yoms3"]
+radius = 323.07584
+
+[node name="Explosion" type="Node2D"]
+show_behind_parent = true
+script = ExtResource("1_0j0nb")
+
+[node name="BoomAnimation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+show_behind_parent = true
+scale = Vector2(9.464789, 9.464789)
+sprite_frames = SubResource("SpriteFrames_2vlgv")
+frame = 6
+frame_progress = 0.31559038
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Hitbox" type="Area2D" parent="." groups=["attack"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("19_xe657")
+damage = 35
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_yoms3")
+
+[connection signal="animation_finished" from="BoomAnimation" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

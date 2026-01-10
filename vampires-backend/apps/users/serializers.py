@@ -84,17 +84,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         user.is_active = False
         user.save()
-
-        token = generate_email_token(user)
-        activation_link = f"http://localhost:8000/api/auth/verify-email/?token={token}"
-
-        send_mail(
-            subject="Aktywuj swoje konto",
-            message=f"Kliknij w link aktywacyjny: {activation_link}",
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            recipient_list=[user.email],
-        )
-
         return user
 
 
