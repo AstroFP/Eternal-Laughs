@@ -7,7 +7,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import LoginSerializer, RegisterSerializer
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
-from .utils.send_email import validate_email_token
+from .utils.send_email import validate_email_token, send_activation_email
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -16,10 +16,16 @@ class RegisterView(APIView):
 
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response({'message': 'Rejestracja zakończona pomyślnie'}, status=201)
-        return Response(serializer.errors, status=400)
+        serializer.is_valid(raise_exception=True)
+
+        user = serializer.save()
+
+        send_activation_email(user, request)
+
+        return Response(
+            {"message": "Rejestracja zakończona. Sprawdź email."},
+            status=201
+        )
 
 
 @method_decorator(csrf_exempt, name='dispatch')
@@ -58,5 +64,7 @@ class LoginView(APIView):
         return Response({
             'refresh': str(refresh),
             'access': str(refresh.access_token),
-            'email': user.email
+            'email': user.email,
+            'username': user.username
+
         })
