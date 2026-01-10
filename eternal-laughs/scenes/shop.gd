@@ -9,6 +9,7 @@ const SHOP_URL = "http://localhost:8000/shop/items"
 func _ready():
 	# Możemy wyczyścić grid na starcie
 	clear_grid()
+	%exit_button.pressed.connect(_on_back_button_pressed)
 
 # Ta funkcja zostanie wywołana z Main Menu, gdy gracz kliknie przycisk
 func open_shop():
@@ -67,4 +68,7 @@ func clear_grid():
 
 # Obsługa przycisku zamknięcia (jeśli jest wewnątrz tej sceny)
 func _on_close_shop_button_pressed():
+	self.visible = false
+
+func _on_back_button_pressed():
 	self.visible = false
