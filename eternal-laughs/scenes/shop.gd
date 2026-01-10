@@ -4,7 +4,7 @@ extends Control
 var weapon_card_scene = preload("res://scenes/weapon_card.tscn")
 
 # URL do API (zmień jeśli kolega ma inny)
-const SHOP_URL = "http://127.0.0.1:8000/api/weapons/"
+const SHOP_URL = "http://localhost:8000/shop/items"
 
 func _ready():
 	# Możemy wyczyścić grid na starcie
@@ -42,6 +42,7 @@ func _on_data_received(_result, response_code, _headers, body, http_node):
 	
 	if parse_result == OK:
 		var data = json.get_data()
+		print(data)
 		if data is Array:
 			populate_grid(data)
 		else:
@@ -56,6 +57,7 @@ func populate_grid(items: Array):
 	for item_data in items:
 		var card = weapon_card_scene.instantiate()
 		%item_grid.add_child(card) # Tutaj %item_grid zadziała idealnie!
+		print(card)
 		card.set_data(item_data)
 
 # Czyszczenie starych kart

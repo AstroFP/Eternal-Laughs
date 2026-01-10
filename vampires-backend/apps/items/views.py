@@ -13,11 +13,11 @@ from apps.items.serializer import ItemSerializer, InventoryItemSerializer
 class ShopItemListView(generics.ListAPIView):
     queryset = Item.objects.all()
     serializer_class = ItemSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
 
 
 class BuyItemView(APIView):
-    permission_classes = [IsAuthenticated]
+    permission_classes = []
 
     @transaction.atomic
     def post(self, request, item_id):
