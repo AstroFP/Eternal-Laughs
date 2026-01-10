@@ -27,6 +27,11 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Eternal Laughs"
 
+[global_group]
+
+player=""
+attack=""
+
 [gui]
 
 common/snap_controls_to_pixels=false

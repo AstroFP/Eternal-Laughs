@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://ns57kyvayv6k"]
+
+[ext_resource type="Script" uid="uid://i4bdx5suv6t3" path="res://scenes/enemies/enemy_robot_walker.gd" id="1_0yp0k"]
+[ext_resource type="Texture2D" uid="uid://bwsc7lvg03vek" path="res://assets/textures/enemies/enemies.png" id="1_hivhv"]
+[ext_resource type="Script" uid="uid://dgyga0gt43qk6" path="res://scripts/health.gd" id="2_htuqv"]
+[ext_resource type="Script" uid="uid://ccap2xnjtosb6" path="res://scripts/hurtbox.gd" id="4_gflak"]
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="5_67anb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0yp0k"]
+radius = 216.66667
+height = 933.3333
+
+[node name="enemy_robot_walker" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.03, 0.03)
+collision_layer = 3
+motion_mode = 1
+script = ExtResource("1_0yp0k")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2_htuqv")
+max_health = 150
+metadata/_custom_type_script = "uid://dgyga0gt43qk6"
+
+[node name="Sprite2DEnemyRobotWalkerFront" type="Sprite2D" parent="."]
+texture = ExtResource("1_hivhv")
+region_enabled = true
+region_rect = Rect2(1457, 133, 785, 1310)
+
+[node name="Sprite2DEnemyRobotWalkerSide" type="Sprite2D" parent="."]
+texture = ExtResource("1_hivhv")
+region_enabled = true
+region_rect = Rect2(1622, 1652, 445, 1291)
+
+[node name="Sprite2DEnemyRobotWalkerBack" type="Sprite2D" parent="."]
+texture = ExtResource("1_hivhv")
+region_enabled = true
+region_rect = Rect2(2330, 142, 786, 1314)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.9073486e-06, 33.333336)
+shape = SubResource("CapsuleShape2D_0yp0k")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("4_gflak")
+metadata/_custom_type_script = "uid://ccap2xnjtosb6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(1.9073486e-06, 33.333336)
+shape = SubResource("CapsuleShape2D_0yp0k")
+
+[node name="Hitbox" type="Area2D" parent="." groups=["attack"]]
+script = ExtResource("5_67anb")
+damage = 7
+is_continuous = true
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1.9073486e-06, 33.333336)
+shape = SubResource("CapsuleShape2D_0yp0k")
+
+[connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]
+[connection signal="damage_received" from="Hurtbox" to="." method="_on_hurtbox_damage_received"]
