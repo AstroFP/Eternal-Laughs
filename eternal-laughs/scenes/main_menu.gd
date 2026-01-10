@@ -11,6 +11,9 @@ const game_path = "res://scenes/game_level.tscn"
 @onready var close_button = %close_button
 @onready var user_label = %user_label 
 
+@onready var shop_button = $top_bar/shop_button
+@onready var shop = %shop
+
 # HTTP Request
 @onready var http_sender = $http_request
 @onready var loading_icon = $loading_icon
@@ -59,6 +62,10 @@ func _ready() -> void:
 	loading_icon.pivot_offset = loading_icon.size / 2
 
 	login_button.grab_focus()
+	
+	# Ukrycie shop button
+	shop_button.visible = false
+	shop_button.pressed.connect(_on_shop_button_pressed)
 
 	# Animacja tytułu
 	if has_node("title"):
@@ -157,6 +164,7 @@ func _on_server_responded(_result, response_code, _headers, body):
 			Global.username = str(response_data.get("username", response_data.get("email", "Graczu")))
 			auth_overlay.visible = false
 			update_ui_after_login()
+			shop_button.visible = true
 		elif current_request_type == "REGISTER":
 			_on_back_to_login_pressed()
 			if has_node("%login_error_label"):
@@ -192,6 +200,7 @@ func _on_open_login_pressed():
 		if has_node("%login_pwd_input"): %login_pwd_input.text = ""
 
 	update_ui_after_login()
+	shop_button.visible = false
 
 # --- NAWIGACJA ---
 func _on_go_to_register_pressed():
@@ -226,3 +235,11 @@ func _on_credits_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+func _on_shop_button_pressed():
+	# Wywołujemy funkcję wewnątrz skryptu sklepu
+	if shop.has_method("open_shop"):
+		shop.open_shop()
+	else:
+		# Zapasowe otwarcie (gdyby skrypt sklepu nie działał)
+		shop.visible = true

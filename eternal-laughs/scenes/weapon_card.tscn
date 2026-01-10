@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0vmyti3k7nl7"]
+
+[ext_resource type="Texture2D" uid="uid://cx3b5nin5ah4l" path="res://icon.svg" id="1_bhqxw"]
+[ext_resource type="Script" uid="uid://dny3mdd0p4sl3" path="res://scenes/weapon_card.gd" id="1_vbdyp"]
+
+[node name="weapon_card" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 250)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vbdyp")
+
+[node name="weapn_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="weapn_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("1_bhqxw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="name_label" type="Label" parent="weapn_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Opel ze znaczkiem skyrim"
+
+[node name="stats_label" type="Label" parent="weapn_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 12
+text = "moc: 90
+spalanie: 200"
+
+[node name="buy_button" type="Button" parent="weapn_container"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BUY (100)"

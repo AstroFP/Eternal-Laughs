@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://h61id5khvw4d"]
+[gd_scene load_steps=17 format=3 uid="uid://h61id5khvw4d"]
 
 [ext_resource type="Script" uid="uid://uvbsqtj2ys1r" path="res://scenes/main_menu.gd" id="1_ekxnf"]
 [ext_resource type="Texture2D" uid="uid://blhg583acimgi" path="res://background.png" id="1_l6cm7"]
 [ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_bqqt6"]
 [ext_resource type="AudioStream" uid="uid://dofgcrjy5ac1p" path="res://resources/music/KDM_menu_music.ogg" id="4_wu84c"]
 [ext_resource type="Texture2D" uid="uid://cx3b5nin5ah4l" path="res://icon.svg" id="5_8ln24"]
+[ext_resource type="PackedScene" uid="uid://chk5d1fxmdfgy" path="res://scenes/shop.tscn" id="6_rtw2f"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
 content_margin_left = 10.0
@@ -237,7 +238,6 @@ theme_override_constants/separation = 15
 
 [node name="login_form" type="VBoxContainer" parent="auth_overlay/auth_window/margin_container/forms_container"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 15
 
@@ -406,6 +406,16 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
 text = "LOGIN"
 
+[node name="shop_button" type="Button" parent="top_bar"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
+theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
+text = "SHOP"
+
 [node name="loading_icon" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
@@ -421,6 +431,11 @@ scale = Vector2(0.1, 0.1)
 pivot_offset = Vector2(0.08, 0)
 texture = ExtResource("5_8ln24")
 stretch_mode = 6
+
+[node name="shop" parent="." instance=ExtResource("6_rtw2f")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="menu_container/new_game_button" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="menu_container/load_game_button" to="." method="_on_load_game_button_pressed"]
