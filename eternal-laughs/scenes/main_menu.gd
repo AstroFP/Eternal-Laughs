@@ -44,7 +44,7 @@ func clear_error_labels():
 		%register_error_label.text = ""
 
 func update_ui_after_login():
-	if Global.is_logged_in:
+	if Global.is_logged_in():  # <- WYWOŁANIE FUNKCJI
 		login_button.text = "LOGOUT"
 		user_label.text = "Witaj " + Global.username + "!"
 		user_label.visible = true
@@ -96,6 +96,7 @@ func _ready() -> void:
 
 # --- LOGOWANIE ---
 func _on_submit_login_pressed():
+	
 	if is_request_in_progress:
 		return
 	var email = %login_email_input.text
@@ -160,8 +161,15 @@ func _on_server_responded(_result, response_code, _headers, body):
 		clear_error_labels()
 		
 		if current_request_type == "LOGIN":
-			Global.is_logged_in = true
+			Global.access_token = str(response_data.get("access", ""))
+			Global.refresh_token = str(response_data.get("refresh", ""))
 			Global.username = str(response_data.get("username", response_data.get("email", "Graczu")))
+			print("Zalogowano jako:", Global.username)
+			print("Access token:", Global.access_token)
+
+
+			
+
 			auth_overlay.visible = false
 			update_ui_after_login()
 			shop_button.visible = true
@@ -189,15 +197,32 @@ func _on_server_responded(_result, response_code, _headers, body):
 
 # --- LOGIN/LOGOUT ---
 func _on_open_login_pressed():
-	if Global.is_logged_in:
-		Global.is_logged_in = false
+	if Global.is_logged_in(): 
+		# Wylogowanie
+		Global.access_token = ""
+		Global.refresh_token = ""
 		Global.username = ""
+		
+		# Odśwież UI
+		update_ui_after_login()
+		shop_button.visible = false 
 	else:
+		# Otwieranie overlay logowania
 		auth_overlay.visible = true
 		login_form.visible = true
 		register_form.visible = false
 		clear_error_labels()
-		if has_node("%login_pwd_input"): %login_pwd_input.text = ""
+		if has_node("%login_pwd_input"):
+			%login_pwd_input.text = ""
+
+
+func update_login_button_text():
+	if Global.is_logged_in():
+		login_button.text = "Logout"
+	else:
+		login_button.text = "Login"
+
+
 
 	update_ui_after_login()
 	shop_button.visible = false

@@ -59,6 +59,7 @@ func populate_grid(items: Array):
 		var card = weapon_card_scene.instantiate()
 		%item_grid.add_child(card) # Tutaj %item_grid zadziała idealnie!
 		print(card)
+		
 		card.set_data(item_data)
 
 # Czyszczenie starych kart

@@ -8,7 +8,7 @@ class InventoryItem(models.Model):
         Player, on_delete=models.CASCADE, related_name="inventory")
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
 
-    quantity = models.IntegerField(default=1)  # przydatne dla mikstur
+    quantity = models.IntegerField(default=1)  
     is_equipped = models.BooleanField(default=False)  # dla broni / armoru
 
     created_at = models.DateTimeField(auto_now_add=True)

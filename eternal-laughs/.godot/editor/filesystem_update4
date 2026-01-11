@@ -1,2 +1,5 @@
 res://scenes/shop.tscn
+res://scenes/Global.gd
 res://scenes/shop.gd
+res://scenes/inventory.tscn
+res://scenes/main_menu.gd
