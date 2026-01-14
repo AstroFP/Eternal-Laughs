@@ -5,6 +5,7 @@ class PurchaseService:
     @staticmethod
     def buy_item(user, item):
         if user.gems < item.price:
+            print(user.gems, item.price)
             raise ValueError("Not enough gems")
 
         user.gems -= item.price

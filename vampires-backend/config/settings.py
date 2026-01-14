@@ -43,10 +43,7 @@ INSTALLED_APPS = [
     'channels',
     'corsheaders',
     'apps.users',
-    'apps.economy',
-    'apps.metagame',
     'apps.payments',
-    'apps.realtime',
     'apps.items',
     'apps.inventory'
 ]

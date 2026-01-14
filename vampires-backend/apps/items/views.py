@@ -15,6 +15,12 @@ class ShopItemListView(generics.ListAPIView):
     serializer_class = ItemSerializer
     permission_classes = []
 
+    def get_queryset(self):
+        user = self.request.user
+        owned_item_ids = InventoryItem.objects.filter(
+            player=user).values_list('item_id', flat=True)
+        return Item.objects.exclude(id__in=owned_item_ids)
+
 
 class BuyItemView(APIView):
     permission_classes = []
