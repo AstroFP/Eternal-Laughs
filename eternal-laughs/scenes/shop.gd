@@ -19,37 +19,51 @@ func open_shop():
 # Pobieranie danych z serwera
 func fetch_items():
 	print("Sklep: Pobieram towary...")
-	
-	# Tworzymy dynamicznie listonosza (HTTPRequest)
+
 	var http = HTTPRequest.new()
 	add_child(http)
-	http.request_completed.connect(_on_data_received.bind(http))
 	
-	var error = http.request(SHOP_URL)
+	# Używamy nowej składni sygnałów Godot 4
+	http.request_completed.connect(_on_data_received)
+
+	var headers = PackedStringArray(["Authorization: Bearer " + Global.access_token])
+
+	var error = http.request(SHOP_URL, headers, HTTPClient.METHOD_GET)
+
 	if error != OK:
-		print("Błąd połączenia ze sklepem!")
+		print("Błąd startu requestu:", error)
 		http.queue_free()
 
+
+
 # Odbiór paczki
-func _on_data_received(_result, response_code, _headers, body, http_node):
-	http_node.queue_free() # Usuwamy listonosza
-	
+# 1. Zmieniona liczba argumentów (z 5 na 4)
+func _on_data_received(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray):
+	# Ten print powie nam, czy Godot w ogóle usłyszał serwer
+	print("--- SYGNAŁ ODEBRANY ---")
+	print("Kod HTTP: ", response_code)
+
+	# Usuwamy HTTPRequest (szukamy go w dzieciach, bo nie mamy go już w argumencie)
+	for child in get_children():
+		if child is HTTPRequest:
+			child.queue_free()
+
 	if response_code != 200:
-		print("Błąd sklepu: ", response_code)
+		print("Błąd serwera! Treść: ", body.get_string_from_utf8())
 		return
-		
+
 	var json = JSON.new()
 	var parse_result = json.parse(body.get_string_from_utf8())
-	
+
 	if parse_result == OK:
 		var data = json.get_data()
-		print(data)
 		if data is Array:
 			populate_grid(data)
 		else:
-			print("Sklep: Otrzymane dane nie są listą!")
+			print("Błąd: Dane to nie lista, tylko: ", typeof(data))
 	else:
-		print("Sklep: Błąd parsowania JSON")
+		print("Błąd parsowania JSON")
+
 
 # Wypełnianie półek
 func populate_grid(items: Array):

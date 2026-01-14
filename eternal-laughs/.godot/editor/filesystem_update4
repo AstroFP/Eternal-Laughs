@@ -1,5 +1,4 @@
-res://scenes/shop.tscn
-res://scenes/Global.gd
-res://scenes/shop.gd
 res://scenes/inventory.tscn
-res://scenes/main_menu.gd
+res://scenes/weapon_card.gd
+res://scenes/shop.gd
+res://scenes/weapon_card.tscn

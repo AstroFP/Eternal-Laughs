@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1768145436
+::res://::1768411894
 background.png::CompressedTexture2D::3173368260291700964::1764871777::1764871777::1::::<><><>0<>0<>5512713da5c042fddeeaff6e536f5397<>res://.godot/imported/background.png-98289422cd7d93003950872a7b97021f.ctex::
 icon.svg::CompressedTexture2D::6445102334777280897::1767886358::1767886550::1::::<><><>0<>0<>c05ba04de4ccc850f4f76e2772a4564c<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
 ::res://assets/::1767887198
@@ -41,7 +41,7 @@ shop_background.png::CompressedTexture2D::7421123694496107250::1768077960::17680
 LuckiestGuy-Regular.ttf::FontFile::7526767261226315179::1767886375::1767886550::1::::<><><>0<>0<>97304410916cde102c8fea907e04bd87<>res://.godot/imported/LuckiestGuy-Regular.ttf-6767c3d496b79f00266c54f404ac998f.fontdata::
 ::res://resources/music/::1767887199
 KDM_menu_music.ogg::AudioStreamOggVorbis::8152596532257199659::1767886375::1767886550::1::::<><><>0<>0<>499d9994d14936772cc355d2a50ca0ab<>res://.godot/imported/KDM_menu_music.ogg-191788c40e02e2a98c146b1fee92ec6c.oggvorbisstr::
-::res://scenes/::1768083577
+::res://scenes/::1768147570
 bullet.gd::GDScript::7095833030951937149::1767886375::0::1::::<>Area2D<><>0<>0<><>::
 bullet.tscn::PackedScene::2303748156558422951::1767886375::0::1::::<><><>0<>0<><>::uid://c8djllkijf270::::res://scenes/bullet.gd<>uid://bm7s68enxvv3r::::res://assets/textures/weapon/Noto_Emoji_v2.034_1f996.svg.png<>uid://dd53dae4g5d1d::::res://scripts/hitbox.gd
 end_screen.gd::GDScript::2271503939302915783::1767886375::0::1::::<>Control<><>0<>0<><>::
@@ -49,15 +49,16 @@ end_screen.tscn::PackedScene::7072003062076665737::1767886375::0::1::::<><><>0<>
 explosion.gd::GDScript::5496798625896998530::1767886375::0::1::::<>Node2D<><>0<>0<><>::
 explosion.tscn::PackedScene::5621020415572664456::1767886375::0::1::::<><><>0<>0<><>::uid://ckkxp8v0aiv11::::res://scenes/explosion.gd<>uid://cuuk4rftlxles::::res://assets/textures/weapon/explosion-frames/frame_00_delay-0.08s.png<>uid://b0ff20gt1j40k::::res://assets/textures/weapon/explosion-frames/frame_01_delay-0.08s.png<>uid://ckbqgn2i5ewqh::::res://assets/textures/weapon/explosion-frames/frame_02_delay-0.08s.png<>uid://bjqkovpoxmxam::::res://assets/textures/weapon/explosion-frames/frame_03_delay-0.08s.png<>uid://mfbdxl7y7q7h::::res://assets/textures/weapon/explosion-frames/frame_04_delay-0.08s.png<>uid://c1g1w07v4d8cv::::res://assets/textures/weapon/explosion-frames/frame_05_delay-0.08s.png<>uid://l6rb6xtqtine::::res://assets/textures/weapon/explosion-frames/frame_06_delay-0.08s.png<>uid://dxfmav14103tj::::res://assets/textures/weapon/explosion-frames/frame_07_delay-0.08s.png<>uid://dbdm1iflc05xc::::res://assets/textures/weapon/explosion-frames/frame_08_delay-0.08s.png<>uid://dt5qxn8jwbr0k::::res://assets/textures/weapon/explosion-frames/frame_09_delay-0.08s.png<>uid://txg855un4wlv::::res://assets/textures/weapon/explosion-frames/frame_10_delay-0.08s.png<>uid://b7csiugr7gt0h::::res://assets/textures/weapon/explosion-frames/frame_11_delay-0.08s.png<>uid://cpfirv4buyp35::::res://assets/textures/weapon/explosion-frames/frame_12_delay-0.08s.png<>uid://c4mwgk2ethtkf::::res://assets/textures/weapon/explosion-frames/frame_13_delay-0.08s.png<>uid://c2tf7v4m6c8nf::::res://assets/textures/weapon/explosion-frames/frame_14_delay-0.08s.png<>uid://bq541pei5xolh::::res://assets/textures/weapon/explosion-frames/frame_15_delay-0.08s.png<>uid://jtkrpku5v63m::::res://assets/textures/weapon/explosion-frames/frame_16_delay-0.08s.png<>uid://dd53dae4g5d1d::::res://scripts/hitbox.gd
 game_level.tscn::PackedScene::1428711264172612685::1767886375::0::1::::<><><>0<>0<><>::uid://bqu688gk1j188::::res://assets/textures/background/dirt_full_new.png<>uid://b2v3sslvw6ecb::::res://scenes/player.tscn<>uid://buoo80hwk78jw::::res://scenes/enemies/spawning/enemy_spawner.tscn<>uid://dntkqfvbn1rl7::::res://scenes/enemies/spawning/spawn_info.gd<>uid://c0r6aw8b7rxf5::::res://scenes/enemies/enemy_cloaked_malice.tscn<>uid://ns57kyvayv6k::::res://scenes/enemies/enemy_robot_walker.tscn<>uid://de0d64mt63x1v::::res://scenes/enemies/enemy_green_centi.tscn
-Global.gd::GDScript::2595437506530532191::1768071324::0::1::::<>Node<><>0<>0<><>::
+Global.gd::GDScript::2595437506530532191::1768146626::0::1::::<>Node<><>0<>0<><>::
 gun.gd::GDScript::4911110068479762771::1767886375::0::1::::<>Area2D<><>0<>0<><>::
 gun.tscn::PackedScene::6599082232540357776::1767886375::0::1::::<><><>0<>0<><>::uid://cb78jaxttalkd::::res://scenes/gun.gd<>uid://d13pjysfxu3gf::::res://assets/textures/weapon/Noto_Emoji_Oreo_1f52b.svg.png
-main_menu.gd::GDScript::1447222537049808669::1768077960::0::1::::<>Control<><>0<>0<><>::
+inventory.tscn::PackedScene::5796465104506519766::1768147570::0::1::::<><><>0<>0<><>::
+main_menu.gd::GDScript::1447222537049808669::1768147570::0::1::::<>Control<><>0<>0<><>::
 main_menu.tscn::PackedScene::556910748383990285::1768077960::0::1::::<><><>0<>0<><>::uid://uvbsqtj2ys1r::::res://scenes/main_menu.gd<>uid://blhg583acimgi::::res://background.png<>uid://dfia00h07sh6b::::res://resources/fonts/LuckiestGuy-Regular.ttf<>uid://dofgcrjy5ac1p::::res://resources/music/KDM_menu_music.ogg<>uid://cx3b5nin5ah4l::::res://icon.svg<>uid://chk5d1fxmdfgy::::res://scenes/shop.tscn
 player.gd::GDScript::826541297154312192::1767886375::0::1::::<>CharacterBody2D<><>0<>0<><>::
 player.tscn::PackedScene::4326604578240897421::1767886375::0::1::::<><><>0<>0<><>::uid://l1naqwf3n3no::::res://scenes/player.gd<>uid://dgyga0gt43qk6::::res://scripts/health.gd<>uid://bwsc7lvg03vek::::res://assets/textures/enemies/enemies.png<>uid://c1av6j12diro7::::res://scenes/gun.tscn<>uid://cmc4ndcfsb33y::::res://scenes/explosion.tscn<>uid://ccap2xnjtosb6::::res://scripts/hurtbox.gd
-shop.gd::GDScript::8269191558493821316::1768083577::0::1::::<>Control<><>0<>0<><>::
-shop.tscn::PackedScene::5286635291950035696::1768083577::0::1::::<><><>0<>0<><>::uid://ddy328nsbe57k::::res://resources/background/shop_background.png<>uid://dp2wm2ux81q5i::::res://scenes/shop.gd<>uid://dfia00h07sh6b::::res://resources/fonts/LuckiestGuy-Regular.ttf
+shop.gd::GDScript::8269191558493821316::1768146013::0::1::::<>Control<><>0<>0<><>::
+shop.tscn::PackedScene::5286635291950035696::1768146058::0::1::::<><><>0<>0<><>::uid://ddy328nsbe57k::::res://resources/background/shop_background.png<>uid://dp2wm2ux81q5i::::res://scenes/shop.gd<>uid://dfia00h07sh6b::::res://resources/fonts/LuckiestGuy-Regular.ttf
 weapon_card.gd::GDScript::8122983753157033874::1768078943::0::1::::<>PanelContainer<><>0<>0<><>::
 weapon_card.tscn::PackedScene::8958107549421199594::1768083577::0::1::::<><><>0<>0<><>::uid://cx3b5nin5ah4l::::res://icon.svg<>uid://dny3mdd0p4sl3::::res://scenes/weapon_card.gd<>uid://dfia00h07sh6b::::res://resources/fonts/LuckiestGuy-Regular.ttf
 ::res://scenes/enemies/::1767886900
