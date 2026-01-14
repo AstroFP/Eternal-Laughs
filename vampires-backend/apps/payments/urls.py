@@ -1,6 +1,11 @@
 from django.urls import path
-from .views import BuyItemView
+from .views import CreatePaymentView, MockGatewayView, GemPackListView
 
 urlpatterns = [
-    path('buy/<str:item_id>/', BuyItemView.as_view(), name='buy_item'),
+    path("packs/", GemPackListView.as_view(), name="gem-packs"),
+
+    path("create/", CreatePaymentView.as_view(), name="create-payment"),
+
+    path("mock-gateway/<int:payment_id>/",
+         MockGatewayView.as_view(), name="mock-gateway"),
 ]
