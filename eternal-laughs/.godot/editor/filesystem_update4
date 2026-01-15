@@ -2,3 +2,11 @@ res://scenes/enemies/spawning/enemy_spawner.tscn
 res://scenes/enemies/spawning/spawn_info.gd
 res://scenes/enemies/spawning/enemy_spawner.gd
 res://scenes/game_level.tscn
+res://scenes/Global.gd
+res://scenes/bullet_weapon.tscn
+res://scenes/player.tscn
+res://scenes/bullet_weapon.gd
+res://scenes/player.gd
+res://scenes/enemies/enemy_cloaked_malice.tscn
+res://scenes/enemies/enemy_green_centi.tscn
+res://scenes/enemies/enemy_robot_walker.tscn

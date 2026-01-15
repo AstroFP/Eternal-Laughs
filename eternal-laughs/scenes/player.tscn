@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2v3sslvw6ecb"]
+[gd_scene load_steps=10 format=3 uid="uid://b2v3sslvw6ecb"]
 
 [ext_resource type="Script" uid="uid://l1naqwf3n3no" path="res://scenes/player.gd" id="1_g2els"]
 [ext_resource type="Script" uid="uid://dgyga0gt43qk6" path="res://scripts/health.gd" id="2_qlg0r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1av6j12diro7" path="res://scenes/gun.tscn" id="3_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://cmc4ndcfsb33y" path="res://scenes/explosion.tscn" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://ccap2xnjtosb6" path="res://scripts/hurtbox.gd" id="6_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://p26gogoeocc0" path="res://scenes/bullet_weapon.tscn" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqkch"]
 radius = 33.0
@@ -44,8 +45,10 @@ region_enabled = true
 region_rect = Rect2(4277, 251, 851, 1118)
 
 [node name="Explosion" parent="." instance=ExtResource("4_dqkch")]
+visible = false
 
 [node name="Gun" parent="." instance=ExtResource("3_qhqgy")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
@@ -85,6 +88,8 @@ offset_bottom = 30.0
 text = "hp/maxhp"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BulletWeapon" parent="." instance=ExtResource("7_fjrip")]
 
 [connection signal="health_changed" from="Health" to="." method="_on_health_health_changed"]
 [connection signal="health_depleted" from="Health" to="." method="_on_health_health_depleted"]

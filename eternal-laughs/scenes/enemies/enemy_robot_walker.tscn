@@ -10,7 +10,7 @@
 radius = 216.66667
 height = 933.3333
 
-[node name="enemy_robot_walker" type="CharacterBody2D" groups=["player"]]
+[node name="enemy_robot_walker" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.03, 0.03)
 collision_layer = 3
 motion_mode = 1

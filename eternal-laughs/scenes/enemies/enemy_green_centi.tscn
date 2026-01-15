@@ -10,7 +10,7 @@
 radius = 166.66666
 height = 566.6666
 
-[node name="enemy_green_centi" type="CharacterBody2D"]
+[node name="enemy_green_centi" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.03, 0.03)
 collision_layer = 3
 script = ExtResource("1_gyxxq")
