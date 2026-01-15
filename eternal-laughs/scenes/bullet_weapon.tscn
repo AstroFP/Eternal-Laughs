@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://p26gogoeocc0"]
+
+[ext_resource type="Texture2D" uid="uid://dgl653bn525yb" path="res://assets/textures/weapon/bullet.png" id="1_3lx84"]
+[ext_resource type="Script" uid="uid://co4k6uk1vmmif" path="res://scenes/bullet_weapon.gd" id="1_gjf0v"]
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="3_86l7e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_31ylv"]
+radius = 17.000002
+height = 178.0
+
+[node name="BulletWeapon" type="Node2D"]
+rotation = -0.7853982
+script = ExtResource("1_gjf0v")
+
+[node name="Node2D" type="Marker2D" parent="."]
+rotation = 0.7853982
+
+[node name="Bullet" type="Sprite2D" parent="Node2D"]
+position = Vector2(118.70394, 2)
+rotation = 1.5707964
+scale = Vector2(0.4957632, 1.1510166)
+texture = ExtResource("1_3lx84")
+
+[node name="Hitbox" type="Area2D" parent="Node2D" groups=["attack"]]
+unique_name_in_owner = true
+rotation = 0.7853982
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_86l7e")
+damage = 20
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hitbox"]
+unique_name_in_owner = true
+position = Vector2(86.26703, -86.26703)
+rotation = 0.7853982
+shape = SubResource("CapsuleShape2D_31ylv")
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://bybmmqon5ac73"]
+
+[ext_resource type="Script" uid="uid://c550477tfxtfp" path="res://scenes/pepe_blast.gd" id="1_1lt3x"]
+[ext_resource type="Texture2D" uid="uid://cgrkgdlurxuht" path="res://assets/textures/weapon/pepe.png" id="1_4nsk8"]
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="2_1lt3x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcodd"]
+size = Vector2(1238.5, 20)
+
+[sub_resource type="Gradient" id="Gradient_1lt3x"]
+offsets = PackedFloat32Array(0.012345679, 0.024691358, 0.962963, 0.9876543)
+colors = PackedColorArray(1, 0.47831017, 0.4535609, 1, 0.9028065, 0.03901595, 0.025836498, 1, 0.89761317, 0.015543044, 0.0029818136, 1, 0.89693576, 0.012481363, 7.70092e-07, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vcodd"]
+gradient = SubResource("Gradient_1lt3x")
+use_hdr = true
+
+[node name="PepeBlast" type="Node2D"]
+script = ExtResource("1_1lt3x")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+
+[node name="Pepe" type="Sprite2D" parent="Marker2D"]
+position = Vector2(59.000008, -10)
+scale = Vector2(0.37438422, 0.3743841)
+texture = ExtResource("1_4nsk8")
+
+[node name="Hitbox" type="Area2D" parent="Marker2D" groups=["attack"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("2_1lt3x")
+damage = 20
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Marker2D/Hitbox"]
+unique_name_in_owner = true
+position = Vector2(675.75, 0)
+shape = SubResource("RectangleShape2D_vcodd")
+
+[node name="Sprite2D" type="Sprite2D" parent="Marker2D/Hitbox/CollisionShape2D"]
+position = Vector2(-3.0517578e-05, 2.842171e-14)
+scale = Vector2(4.8378906, 19.999998)
+texture = SubResource("GradientTexture1D_vcodd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

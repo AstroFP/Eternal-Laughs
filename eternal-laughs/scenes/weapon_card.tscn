@@ -1,0 +1,96 @@
+[gd_scene load_steps=7 format=3 uid="uid://d0vmyti3k7nl7"]
+
+[ext_resource type="Texture2D" uid="uid://cx3b5nin5ah4l" path="res://icon.svg" id="1_bhqxw"]
+[ext_resource type="Script" uid="uid://dny3mdd0p4sl3" path="res://scenes/weapon_card.gd" id="1_vbdyp"]
+[ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_e4ycc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4ycc"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2xo5v"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gac7m"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="weapon_card" type="PanelContainer"]
+custom_minimum_size = Vector2(200, 250)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vbdyp")
+
+[node name="weapn_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="icon" type="TextureRect" parent="weapn_container"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture = ExtResource("1_bhqxw")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="name_label" type="Label" parent="weapn_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_e4ycc")
+text = "Opel ze znaczkiem skyrim"
+
+[node name="stats_label" type="Label" parent="weapn_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_e4ycc")
+theme_override_font_sizes/font_size = 10
+text = "moc: 90
+spalanie: 200"
+
+[node name="buy_button" type="Button" parent="weapn_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_e4ycc")
+theme_override_styles/normal = SubResource("StyleBoxFlat_e4ycc")
+theme_override_styles/hover = SubResource("StyleBoxFlat_2xo5v")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gac7m")
+text = "BUY (100)"

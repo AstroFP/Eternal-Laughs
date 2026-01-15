@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Eternal Laughs"
-run/main_scene="uid://umcwvv7t6qmn"
+run/main_scene="uid://h61id5khvw4d"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://scenes/Global.gd"
 
 [display]
 
@@ -27,10 +31,15 @@ window/stretch/mode="canvas_items"
 
 project/assembly_name="Eternal Laughs"
 
+[editor]
+
+version_control/autoload_on_startup=true
+
 [global_group]
 
 player=""
 attack=""
+enemies=""
 
 [gui]
 

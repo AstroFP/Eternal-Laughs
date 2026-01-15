@@ -10,7 +10,7 @@
 radius = 183.33333
 height = 833.3333
 
-[node name="enemy_cloaked_malice" type="CharacterBody2D"]
+[node name="enemy_cloaked_malice" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.03, 0.03)
 collision_layer = 3
 script = ExtResource("1_h0g51")

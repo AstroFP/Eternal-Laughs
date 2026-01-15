@@ -12,7 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-
+import dj_database_url
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +27,7 @@ SECRET_KEY = 'django-insecure-^4=5x5po=9ij2&eii@dhu704^vfz%uci+ofsqimnbn&frxsfzh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["eternal-laughs-1.onrender.com"]
 
 
 # Application definition
@@ -43,12 +44,24 @@ INSTALLED_APPS = [
     'channels',
     'corsheaders',
     'apps.users',
-    'apps.economy',
-    'apps.metagame',
     'apps.payments',
-    'apps.realtime',
+    'apps.items',
+    'apps.inventory'
 ]
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
+
+EMAIL_HOST_USER = 'parchatkarobert@gmail.com'
+EMAIL_HOST_PASSWORD = 'dbvm snwq pjva ougd'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+CLOUDINARY = {
+    "cloud_name": "dwiyamf4b",
+    "api_key": "436261368646132",
+    "api_secret": "<your_api_secret>",
+}
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -84,11 +97,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(
+        default=os.getenv('DATABASE_URL')
+    )
 }
 
 AUTH_USER_MODEL = 'users.Player'
@@ -135,15 +153,13 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Django REST Framework
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ),
+        'rest_framework.permissions.AllowAny',
+    )
 }
 
 # Simple JWT Settings

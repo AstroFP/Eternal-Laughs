@@ -12,6 +12,7 @@ const end_path = "res://scenes/end_screen.tscn"
 @onready var player_side_texture: Sprite2D = $Sprite2DPlayerSide
 @onready var player_back_texture: Sprite2D = $Sprite2DPlayerBack
 
+var move_dir := Vector2.ZERO
 var invincibility := false
 
 func _ready():
@@ -31,6 +32,7 @@ func movement():
 	var y_axis_movement = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var final_movement = Vector2(x_axis_movement,y_axis_movement)
 	adjust_texture(final_movement)
+	move_dir = final_movement.normalized()
 	velocity = final_movement.normalized()*player_movement_speed
 	move_and_slide()
 
