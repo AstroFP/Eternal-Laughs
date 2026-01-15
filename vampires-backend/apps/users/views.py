@@ -20,10 +20,10 @@ class RegisterView(APIView):
 
         user = serializer.save()
 
-        send_activation_email(user, request)
+        # send_activation_email(user, request)
 
         return Response(
-            {"message": "Rejestracja zakończona. Sprawdź email."},
+            {"message": "Rejestracja zakończona. Zaloguj sie"},
             status=201
         )
 
