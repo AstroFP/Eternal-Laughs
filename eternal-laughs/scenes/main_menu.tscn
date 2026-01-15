@@ -1,11 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://h61id5khvw4d"]
+[gd_scene load_steps=18 format=3 uid="uid://h61id5khvw4d"]
 
 [ext_resource type="Script" uid="uid://uvbsqtj2ys1r" path="res://scenes/main_menu.gd" id="1_ekxnf"]
-[ext_resource type="Texture2D" uid="uid://blhg583acimgi" path="res://background.png" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://c3qkewylnunfs" path="res://resources/background/background.png" id="2_rtw2f"]
 [ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_bqqt6"]
 [ext_resource type="AudioStream" uid="uid://dofgcrjy5ac1p" path="res://resources/music/KDM_menu_music.ogg" id="4_wu84c"]
 [ext_resource type="Texture2D" uid="uid://cx3b5nin5ah4l" path="res://icon.svg" id="5_8ln24"]
 [ext_resource type="PackedScene" uid="uid://chk5d1fxmdfgy" path="res://scenes/shop.tscn" id="6_rtw2f"]
+[ext_resource type="PackedScene" uid="uid://q63qqp1031ii" path="res://inventory.tscn" id="7_oa1go"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bqqt6"]
 content_margin_left = 10.0
@@ -117,7 +118,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_l6cm7")
+texture = ExtResource("2_rtw2f")
 expand_mode = 1
 stretch_mode = 6
 
@@ -145,7 +146,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
 disabled = true
 text = "New Game"
 
-[node name="load_game_button" type="Button" parent="menu_container"]
+[node name="inventory_button" type="Button" parent="menu_container"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
@@ -154,7 +155,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_bqqt6")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ekxnf")
 theme_override_styles/focus = SubResource("StyleBoxFlat_wu84c")
 disabled = true
-text = "Load Game"
+text = "INVENTORY"
 
 [node name="options_button" type="Button" parent="menu_container"]
 layout_mode = 2
@@ -205,6 +206,7 @@ autoplay = true
 
 [node name="auth_overlay" type="ColorRect" parent="."]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -437,8 +439,12 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
+[node name="inventory" parent="." instance=ExtResource("7_oa1go")]
+unique_name_in_owner = true
+layout_mode = 1
+
 [connection signal="pressed" from="menu_container/new_game_button" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="menu_container/load_game_button" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="menu_container/inventory_button" to="." method="_on_load_game_button_pressed"]
 [connection signal="pressed" from="menu_container/options_button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="menu_container/credits_button" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="menu_container/quit_button" to="." method="_on_quit_button_pressed"]

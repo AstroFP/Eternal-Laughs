@@ -14,6 +14,9 @@ const game_path = "res://scenes/game_level.tscn"
 @onready var shop_button = $top_bar/shop_button
 @onready var shop = %shop
 
+@onready var inventory_window = %inventory
+@onready var inventory_button = $menu_container/inventory_button
+
 # HTTP Request
 @onready var http_sender = $http_request
 @onready var loading_icon = $loading_icon
@@ -49,12 +52,12 @@ func update_ui_after_login():
 		user_label.text = "Witaj " + Global.username + "!"
 		user_label.visible = true
 		$menu_container/new_game_button.disabled = false
-		$menu_container/load_game_button.disabled = false
+		$menu_container/inventory_button.disabled = false
 	else:
 		login_button.text = "LOGIN"
 		user_label.visible = false
 		$menu_container/new_game_button.disabled = true
-		$menu_container/load_game_button.disabled = true
+		$menu_container/inventory_button.disabled = true
 
 # --- READY ---
 func _ready() -> void:
@@ -76,6 +79,10 @@ func _ready() -> void:
 		tween.tween_property(title_node, "scale", Vector2(1.1, 1.1), 1.5)
 		tween.tween_property(title_node, "scale", Vector2(1.0, 1.0), 1.5)
 
+	if inventory_window:
+		inventory_window.visible = false
+	
+	inventory_button.pressed.connect(_on_inventory_button_pressed)
 	# Overlay ukryty na start
 	auth_overlay.visible = false
 
@@ -249,9 +256,6 @@ func _process(delta):
 func _on_new_game_button_pressed() -> void:
 	get_tree().change_scene_to_file(game_path)
 
-func _on_load_game_button_pressed() -> void:
-	print("Saved games here (someday)")
-
 func _on_options_button_pressed() -> void:
 	print("Options here (someday)")
 
@@ -268,3 +272,11 @@ func _on_shop_button_pressed():
 	else:
 		# Zapasowe otwarcie (gdyby skrypt sklepu nie działał)
 		shop.visible = true
+
+func _on_inventory_button_pressed():
+	# Sprawdzamy czy skrypt inventory ma metodę open_inventory
+	if inventory_window.has_method("open_inventory"):
+		inventory_window.open_inventory()
+	else:
+		# Fallback (samo pokazanie, bez odświeżania danych)
+		inventory_window.visible = true

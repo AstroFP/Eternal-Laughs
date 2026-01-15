@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://chk5d1fxmdfgy"]
 
-[ext_resource type="Texture2D" uid="uid://ddy328nsbe57k" path="res://resources/background/shop_background.png" id="1_lx5au"]
 [ext_resource type="Script" uid="uid://dp2wm2ux81q5i" path="res://scenes/shop.gd" id="1_xfvoa"]
+[ext_resource type="Texture2D" uid="uid://c3qkewylnunfs" path="res://resources/background/background.png" id="2_1l46r"]
 [ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_1l46r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xfvoa"]
@@ -16,7 +16,7 @@ content_margin_left = 10.0
 content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 0.0
-bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+bg_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
 border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -103,17 +103,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_lx5au")
+texture = ExtResource("2_1l46r")
 expand_mode = 1
 stretch_mode = 6
 metadata/_edit_use_anchors_ = true
 
 [node name="item_panel" type="Panel" parent="."]
-layout_mode = 0
-offset_left = 54.0
-offset_top = 55.0
-offset_right = 381.0
-offset_bottom = 325.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -159.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = 135.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_xfvoa")
 
 [node name="item_scroll_panel" type="ScrollContainer" parent="item_panel"]
@@ -121,6 +128,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = -13.0
+offset_bottom = -11.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,25 +140,24 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 20
 theme_override_constants/v_separation = 20
-columns = 2
+columns = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -131.0
-offset_top = 11.0
-offset_right = -11.0
-offset_bottom = 65.0
-grow_horizontal = 0
+anchors_preset = -1
+anchor_left = 0.035
+anchor_top = 0.04
+anchor_right = 0.04
+anchor_bottom = 0.04
+offset_right = 120.0
+offset_bottom = 54.0
 theme_override_constants/separation = 10
 
 [node name="add_funds_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_colors/font_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("3_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_032fp")
@@ -157,7 +167,7 @@ text = "ADD FUNDS"
 [node name="exit_button" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_colors/font_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
 theme_override_fonts/font = ExtResource("3_1l46r")
 theme_override_styles/normal = SubResource("StyleBoxFlat_1l46r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8r1wq")
