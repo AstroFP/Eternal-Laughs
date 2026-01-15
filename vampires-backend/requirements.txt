@@ -6,4 +6,6 @@ channels-redis==4.2.0
 redis==5.0.1
 django-cors-headers==4.3.1
 gunicorn
-psycopg2-binary   
+psycopg2-binary
+sendgrid>=6.9.0
+
