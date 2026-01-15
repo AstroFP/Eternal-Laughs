@@ -1,8 +1,8 @@
 CollisionShape2D
 Hitbox
+Node2D
 Timer
 Marker2D
-Node2D
 VBoxContainer
 Button
 Label

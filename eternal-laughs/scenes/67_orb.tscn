@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://clujnxhvacrmm"]
+
+[ext_resource type="Script" uid="uid://dv3oa3wxlcgx1" path="res://67_orb.gd" id="1_aibng"]
+[ext_resource type="Texture2D" uid="uid://1tiieibuqwoh" path="res://assets/textures/weapon/67.png" id="2_y1c2h"]
+[ext_resource type="Script" uid="uid://dd53dae4g5d1d" path="res://scripts/hitbox.gd" id="3_13757"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gokak"]
+radius = 74.02702
+
+[node name="67 Orb" type="Node2D"]
+script = ExtResource("1_aibng")
+radius = 300.0
+
+[node name="67" type="Sprite2D" parent="."]
+position = Vector2(-9, -3)
+texture = ExtResource("2_y1c2h")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("3_13757")
+damage = 30
+is_continuous = true
+metadata/_custom_type_script = "uid://dd53dae4g5d1d"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("CircleShape2D_gokak")

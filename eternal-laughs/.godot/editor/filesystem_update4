@@ -10,3 +10,5 @@ res://scenes/player.gd
 res://scenes/enemies/enemy_cloaked_malice.tscn
 res://scenes/enemies/enemy_green_centi.tscn
 res://scenes/enemies/enemy_robot_walker.tscn
+res://67_orb.gd
+res://scenes/67_orb.tscn
