@@ -1,3 +1,4 @@
-res://scenes/weapon_card.tscn
-res://scenes/shop.gd
-res://scenes/main_menu.gd
+res://scenes/enemies/spawning/enemy_spawner.tscn
+res://scenes/enemies/spawning/spawn_info.gd
+res://scenes/enemies/spawning/enemy_spawner.gd
+res://scenes/game_level.tscn
