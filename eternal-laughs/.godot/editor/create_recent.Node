@@ -1,9 +1,9 @@
-VBoxContainer
-Button
-Label
 TextureRect
-PanelContainer
+Button
 GridContainer
 ScrollContainer
+Label
+VBoxContainer
 Panel
+PanelContainer
 HBoxContainer

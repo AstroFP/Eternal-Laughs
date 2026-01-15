@@ -1,83 +1,108 @@
 extends PanelContainer
 
-var item_data = {}
-@onready var item_icon = %icon  # Twój TextureRect
+signal action_pressed(id)
 
-var current_http_request: HTTPRequest = null  # przechowamy instancję HTTPRequest
+var my_id = -1
+var is_inventory = false
+var current_http_request: HTTPRequest = null
 
-func set_data(data: Dictionary):
-	item_data = data
+func _ready():
+	# Zabezpieczenie przed podwójnym podłączeniem
+	if %buy_button.pressed.is_connected(_on_buy_button_pressed):
+		%buy_button.pressed.disconnect(_on_buy_button_pressed)
+	%buy_button.pressed.connect(_on_buy_button_pressed)
+
+func set_data(data: Dictionary, is_inventory_mode = false):
+	is_inventory = is_inventory_mode
 	
-	# Nazwa
-	%name_label.text = str(data.get("name", "Nieznany przedmiot"))
+	var item_info = data
+	if data.has("item"):
+		item_info = data["item"]
+	
+	my_id = data.get("id", -1)
+	
+	# Pobieramy nazwę
+	var item_name = str(item_info.get("name", "Unknown"))
+	if has_node("%name_label"):
+		%name_label.text = item_name
 	
 	# Statystyki
-	var stats_text = ""
-	if data.has("attack"):
-		stats_text += "Atak: " + str(data["attack"]) + "\n"
-	if data.has("defense"):
-		stats_text += "Obrona: " + str(data["defense"])
-	%stats_label.text = stats_text
+	if has_node("%stats_label"):
+		var atk = item_info.get("attack", 0)
+		var def = item_info.get("defense", 0)
+		%stats_label.text = "ATAK: " + str(atk) + "\nOBRONA: " + str(def)
 	
-	# Cena
-	var price = data.get("price", 0)
-	%buy_button.text = "KUP (" + str(price) + ")"
+	# Przycisk
+	if has_node("%buy_button"):
+		if is_inventory:
+			if data.get("is_equipped", false):
+				%buy_button.text = "ZDEJMIJ"
+				%buy_button.modulate = Color(1, 0, 0)
+			else:
+				%buy_button.text = "ZAŁÓŻ"
+				%buy_button.modulate = Color(0, 1, 0)
+		else:
+			var price = item_info.get("price", 0)
+			%buy_button.text = "KUP (" + str(price) + ")"
+			%buy_button.modulate = Color(1, 1, 1)
+
+	# --- HACK NA PREZENTACJĘ: RĘCZNE PRZYPISANIE OBRAZKÓW ---
+	var url = item_info.get("image_url", "")
 	
-	# Ikona
-	if data.has("image_url") and data["image_url"] != "":
-		load_image_from_url(data["image_url"])
+	if "Pepe" in item_name:
+		url = "http://127.0.0.1:8000/equipment/pepe.png"
+	elif "Medal" in item_name or "67" in item_name:
+		url = "http://127.0.0.1:8000/equipment/sixseven.png"
+	elif "Nabój" in item_name or "Super" in item_name:
+		url = "http://127.0.0.1:8000/equipment/naboj.png"
+		
+	if url != "":
+		print("Pobieram obrazek dla: " + item_name + " z URL: " + url)
+		load_image_from_url(url)
+	else:
+		print("Brak URL dla: " + item_name)
 
 func _on_buy_button_pressed():
-	print("Kupiono: ", item_data.get("name"))
+	emit_signal("action_pressed", my_id)
 
-# --- pobieranie obrazka ---
-# --- pobieranie obrazka ---
+# --- Obsługa pobierania obrazka ---
 func load_image_from_url(url: String):
+	if current_http_request != null:
+		current_http_request.queue_free()
+	
 	current_http_request = HTTPRequest.new()
 	add_child(current_http_request)
 	
-	# Opcjonalne: Wyłącz weryfikację certyfikatu, jeśli HTTPS sprawia problemy
-	# current_http_request.set_tls_verify_node(false)
+	# --- TU BYŁ BŁĄD! Dodaliśmy .bind(current_http_request) ---
+	# Dzięki temu funkcja _on_image_downloaded dostanie ten brakujący 5. argument
+	current_http_request.request_completed.connect(_on_image_downloaded.bind(current_http_request))
 	
-	# WAŻNE: W Godot 4 używamy .connect(funkcja)
-	current_http_request.request_completed.connect(_on_image_downloaded)
-	
-	# Jeśli obrazek na Cloudinary nie jest publiczny, dodaj nagłówek z tokenem
-	# Ale zazwyczaj URL z Cloudinary są publiczne, więc nagłówki są puste:
 	var headers = PackedStringArray([]) 
-	
 	var error = current_http_request.request(url, headers)
 	if error != OK:
-		print("Błąd wysyłania zapytania o obraz:", error)
+		print("Błąd startu pobierania obrazka: ", error)
 
-# USUNIĘTO 5. ARGUMENT "request" - teraz są 4
-func _on_image_downloaded(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray):
-	if current_http_request:
-		current_http_request.queue_free()
+# Ta funkcja wymaga 5 argumentów. Teraz je dostanie.
+func _on_image_downloaded(result, response_code, headers, body, http_node):
+	if http_node:
+		http_node.queue_free()
+
+	# Czyścimy referencję jeśli to ten sam request
+	if current_http_request == http_node:
 		current_http_request = null
-
-	print("Pobieranie obrazka - status HTTP: ", response_code)
 
 	if response_code == 200:
 		var img = Image.new()
-		
-		# Ponieważ Twój link kończy się na .png, używamy konkretnej metody:
 		var error = img.load_png_from_buffer(body)
 		
-		# Jeśli jednak Cloudinary zmieni format w locie, to dla pewności:
 		if error != OK:
 			error = img.load_jpg_from_buffer(body)
 		
 		if error == OK:
-			# Tworzymy teksturę z załadowanego obrazu
 			var tex = ImageTexture.create_from_image(img)
-			
 			if %icon:
 				%icon.texture = tex
-				print("Sukces: Obrazek wyświetlony!")
-			else:
-				print("Błąd: Nie znaleziono węzła %item_icon w scenie")
-		else:
-			print("Błąd: Nie udało się zdekodować danych obrazu. Kod błędu Godot:", error)
+				%icon.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+				%icon.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	else:
-		print("Błąd: Serwer Cloudinary zwrócił kod: ", response_code)
+		print("Błąd pobierania grafiki. Kod HTTP: ", response_code)

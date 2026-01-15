@@ -1,0 +1,159 @@
+[gd_scene load_steps=9 format=3 uid="uid://q63qqp1031ii"]
+
+[ext_resource type="Script" uid="uid://be2gv3a1yv3dk" path="res://inventory.gd" id="1_psafj"]
+[ext_resource type="Texture2D" uid="uid://cus30ktjbqlwj" path="res://resources/background/inventory_background.png" id="2_5tt2m"]
+[ext_resource type="FontFile" uid="uid://dfia00h07sh6b" path="res://resources/fonts/LuckiestGuy-Regular.ttf" id="3_5tt2m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mrqgh"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.49411765, 0.30588236, 0.14117648, 0.72156864)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5686275, 0.49019608, 0.32156864, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_psafj"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5tt2m"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 0.0
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dw5ng"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.74509805, 0.08627451, 0.12941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xmy5"]
+bg_color = Color(0.7764706, 0.69803923, 0.52156866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.5921569, 0.5019608, 0.32941177, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="inventory" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_psafj")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_5tt2m")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="inventory_panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.390625
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 96.0
+offset_bottom = -10.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mrqgh")
+
+[node name="inventory" type="VBoxContainer" parent="inventory_panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 16.0
+offset_right = -15.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="label" type="Label" parent="inventory_panel/inventory"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_5tt2m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_psafj")
+text = "YOUR EQUIPMENT"
+horizontal_alignment = 1
+
+[node name="inventory_scroll_container" type="ScrollContainer" parent="inventory_panel/inventory"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="item_grid" type="GridContainer" parent="inventory_panel/inventory/inventory_scroll_container"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 2
+
+[node name="exit_button" type="Button" parent="inventory_panel/inventory"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4862745, 0.40784314, 0.25490198, 1)
+theme_override_fonts/font = ExtResource("3_5tt2m")
+theme_override_styles/normal = SubResource("StyleBoxFlat_5tt2m")
+theme_override_styles/hover = SubResource("StyleBoxFlat_dw5ng")
+theme_override_styles/focus = SubResource("StyleBoxFlat_0xmy5")
+text = "BACK"
+
+[node name="hand_weapon" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 539.0
+offset_top = 150.0
+offset_right = 572.0
+offset_bottom = 189.0
+expand_mode = 1
+stretch_mode = 5

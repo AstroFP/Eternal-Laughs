@@ -1,4 +1,6 @@
-res://scenes/inventory.tscn
-res://scenes/weapon_card.gd
+res://scenes/shop.tscn
 res://scenes/shop.gd
+res://inventory.gd
 res://scenes/weapon_card.tscn
+res://scenes/weapon_card.gd
+res://inventory.tscn

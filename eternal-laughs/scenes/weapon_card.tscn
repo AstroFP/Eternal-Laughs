@@ -49,7 +49,7 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [node name="weapon_card" type="PanelContainer"]
-custom_minimum_size = Vector2(200, 250)
+custom_minimum_size = Vector2(220, 300)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,10 +62,10 @@ layout_mode = 2
 
 [node name="icon" type="TextureRect" parent="weapn_container"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 100)
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("1_bhqxw")
-expand_mode = 1
+expand_mode = 2
 stretch_mode = 5
 
 [node name="name_label" type="Label" parent="weapn_container"]

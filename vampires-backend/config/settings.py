@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-^4=5x5po=9ij2&eii@dhu704^vfz%uci+ofsqimnbn&frxsfzh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["eternal-laughs-1.onrender.com"]
+ALLOWED_HOSTS = ["eternal-laughs-1.onrender.com", "127.0.0.1", "localhost"]
 
 
 # Application definition
@@ -103,10 +103,17 @@ WSGI_APPLICATION = 'config.wsgi.application'
 #        'NAME': BASE_DIR / 'db.sqlite3',
 #    }
 # }
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=os.getenv('DATABASE_URL')
+#    )
+#}
+
 DATABASES = {
-    'default': dj_database_url.config(
-        default=os.getenv('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 AUTH_USER_MODEL = 'users.Player'
