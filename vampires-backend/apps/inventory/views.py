@@ -29,9 +29,8 @@ class UseItemView(APIView):
         item = inv.item
 
         if item.category in ['consumable', 'misc']:
-            # Zużywalne itemy – zmniejszamy quantity
-            # Tutaj możesz dodać efekt np. player.blood += item.blood_bonus
-            player.gems += getattr(item, 'gems_bonus', 0)  # przykładowy efekt
+            # Zużywalne itemy
+            player.gems += getattr(item, 'gems_bonus', 0)
             player.save()
 
             inv.quantity -= 1
@@ -40,9 +39,16 @@ class UseItemView(APIView):
             else:
                 inv.save()
         else:
-            # Niezużywalne (weapon, armor, artifact)
-            # Nie zmieniamy quantity, można ustawić is_equipped
+            # Niezużywalne – toggle is_equipped
+            if not inv.is_equipped:
+                # odznacz wszystkie inne w tym samym slocie
+                InventoryItem.objects.filter(
+                    player=player,
+                    item__category=item.category,
+                    is_equipped=True
+                ).update(is_equipped=False)
+
             inv.is_equipped = not inv.is_equipped
             inv.save()
 
-        return Response({"success": True})
+        return Response({"success": True, "is_equipped": inv.is_equipped})

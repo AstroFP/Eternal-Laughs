@@ -4,7 +4,7 @@ extends Control
 var weapon_card_scene = preload("res://scenes/weapon_card.tscn")
 
 # URL do API (zmień jeśli kolega ma inny)
-const SHOP_URL = "http://localhost:8000/shop/items"
+const SHOP_URL = "https://eternal-laughs-1.onrender.com/shop/items"
 
 func _ready():
 	# Możemy wyczyścić grid na starcie

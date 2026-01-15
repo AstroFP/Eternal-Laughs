@@ -109,7 +109,7 @@ func _on_submit_login_pressed():
 	var data_to_send = {"email": email, "password": password}
 	current_request_type = "LOGIN"
 	show_loading(false)
-	send_post_request("http://127.0.0.1:8000/api/auth/login/", data_to_send)
+	send_post_request("https://eternal-laughs-1.onrender.com/api/auth/login/", data_to_send)
 
 # --- REJESTRACJA ---
 func _on_submit_register_pressed():
@@ -138,7 +138,7 @@ func _on_submit_register_pressed():
 	}
 	current_request_type = "REGISTER"
 	show_loading(true)
-	send_post_request("http://127.0.0.1:8000/api/auth/register/", data_to_send)
+	send_post_request("https://eternal-laughs-1.onrender.com/api/auth/register/", data_to_send)
 
 # --- HTTP HELPER ---
 func send_post_request(url: String, data: Dictionary):
