@@ -12,3 +12,8 @@ res://scenes/enemies/enemy_green_centi.tscn
 res://scenes/enemies/enemy_robot_walker.tscn
 res://67_orb.gd
 res://scenes/67_orb.tscn
+res://scenes/pepe_blast.tscn
+res://scenes/explosion.tscn
+res://scenes/pepe_blast.gd
+res://scenes/bullet.tscn
+res://scripts/hurtbox.gd

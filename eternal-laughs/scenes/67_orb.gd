@@ -19,15 +19,6 @@ extends Node2D
 var angle: float = 0.0  # current angle around player
 
 # -----------------------------
-# READY
-# -----------------------------
-func _ready() -> void:
-	if collision:
-		collision.set_deferred("disabled", false)
-	else:
-		push_error("CollisionShape2D not found under Hitbox!")
-
-# -----------------------------
 # PROCESS
 # -----------------------------
 func _process(delta: float) -> void:

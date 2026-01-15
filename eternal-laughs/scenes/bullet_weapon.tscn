@@ -21,11 +21,13 @@ rotation = 1.5707964
 scale = Vector2(0.4957632, 1.1510166)
 texture = ExtResource("1_3lx84")
 
-[node name="Hitbox" type="Area2D" parent="Node2D"]
+[node name="Hitbox" type="Area2D" parent="Node2D" groups=["attack"]]
 unique_name_in_owner = true
 rotation = 0.7853982
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("3_86l7e")
-damage = 40
+damage = 20
 metadata/_custom_type_script = "uid://dd53dae4g5d1d"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Hitbox"]
