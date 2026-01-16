@@ -5,3 +5,5 @@ res://scenes/player.tscn
 res://scenes/player.gd
 res://scenes/bullet_weapon.gd
 res://scenes/gun.gd
+res://scenes/game_level.tscn
+res://scenes/explosion.gd

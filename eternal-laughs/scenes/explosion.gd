@@ -5,6 +5,7 @@ extends Node2D
 @onready var collision = $Hitbox/CollisionShape2D
 @export var cooldown = 3.0
 
+var player: CharacterBody2D
 
 func _ready():
 	anim.visible = false

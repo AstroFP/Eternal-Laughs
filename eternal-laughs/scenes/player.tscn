@@ -22,7 +22,7 @@ script = ExtResource("1_g2els")
 
 [node name="PlayerWeapons" type="Node" parent="."]
 script = ExtResource("2_tuyoq")
-starting_weapons = Array[int]([1, 3])
+starting_weapons = Array[int]([0, 4])
 
 [node name="Health" type="Node" parent="."]
 script = ExtResource("2_qlg0r")
