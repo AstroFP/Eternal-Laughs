@@ -4,6 +4,7 @@ const end_path = "res://scenes/end_screen.tscn"
 
 @export var player_movement_speed := 40.0
 
+@onready var weapon_handler := $PlayerWeapons
 @onready var health: Health = $Health
 @onready var invtimer: Timer = $Hurtbox/InvincibilityTimer
 @onready var healthbar: ProgressBar = $HealthBar
@@ -22,6 +23,9 @@ func healthbar_update():
 	healthbar.max_value = health.max_health
 	healthbar.value = health.health
 	healthlabel.text = "%s/%s" % [health.health, health.max_health]
+
+func add_weapon(weapon_id: String):
+	weapon_handler.add_weapon(weapon_id, self)
 
 func _physics_process(delta: float) -> void:
 	movement()

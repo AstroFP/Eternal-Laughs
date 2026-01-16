@@ -1,6 +1,7 @@
-res://scenes/shop.tscn
-res://scenes/shop.gd
-res://inventory.gd
-res://scenes/weapon_card.tscn
-res://scenes/weapon_card.gd
-res://inventory.tscn
+res://Weapons_Database.gd
+res://scripts/Weapons_Database.gd
+res://scripts/playerweapons.gd
+res://scenes/player.tscn
+res://scenes/player.gd
+res://scenes/bullet_weapon.gd
+res://scenes/gun.gd
